@@ -1,0 +1,16 @@
+<%= link_to "Back to #{@review.eatery.name}", @review.eatery, class: "btn btn-primary" %>
+<div class="row">
+  <div class="well col-xs-12 col-md-8 col-md-offset-2">
+    <h1><%= @review.title %></h1>
+    <p><%= simple_format @review.description %></p>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <% if current_user == @review.user %>
+          <%= link_to "Edit", edit_eatery_review_path, class: "btn btn-info" %>
+          <%= link_to "Delete", eatery_review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

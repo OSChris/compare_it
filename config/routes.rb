@@ -1,18 +1,10 @@
 Rails.application.routes.draw do
-  resources :categories
-
-  resources :profiles
-
-  resources :likes
-
-  resources :pictures
-
-  resources :galleries
-
-  resources :reviews
-
   devise_for :users
-  resources :eateries
+  
+  resources :eateries do 
+    resources :reviews
+    collection { post  :import }
+  end
 
   root 'eateries#index'
 

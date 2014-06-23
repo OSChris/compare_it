@@ -1,0 +1,25 @@
+<h1><%= @eatery.name %></h1><small><%= @eatery.address %></small>
+<p><%= @eatery.description %></p>
+
+<h2>Review <%= @eatery.name %></h2>
+<div class= "row">
+  <%= simple_form_for [@eatery, @review], class: "form-horizontal" do |f| %>
+    <div class= "form-group col-xs-12 col-md-6 well">
+      <%= f.input :title, input_html: { class: 'form-control' } %>
+      <%= f.input :description, input_html: { class: 'form-control' } %>
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
+
+<h2>List of Reviews for <%= @eatery.name %></h2>
+<% @eatery.reviews.each_slice(3) do |review_group| %>
+  <div class="row">
+    <% review_group.each do |review| %>
+      <div class= "well col-xs-8 col-md-4">
+        <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
+        <p><%= simple_format truncate(review.description, length: 200) %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

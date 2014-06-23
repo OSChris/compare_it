@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @eateries.each do |eatery| %>
+      <tr>
+        <td><%= link_to eatery.name, eatery %></td>
+        <td><%= eatery.address %></td>
+        <td><%= eatery.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>

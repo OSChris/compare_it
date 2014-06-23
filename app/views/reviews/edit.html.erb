@@ -1,0 +1,9 @@
+<div class= "row">
+  <%= simple_form_for [@eatery, @review], class: "form-horizontal" do |f| %>
+    <div class= "form-group col-xs-12 col-md-6 well">
+      <%= f.input :title, input_html: { class: 'form-control' } %>
+      <%= f.input :description, input_html: { class: 'form-control' } %>
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
