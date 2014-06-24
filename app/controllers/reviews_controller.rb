@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :find_eatery, only: [:index, :show, :create, :edit, :update, :destroy]
-  before_action :find_review, only: [:index, :show, :edit, :update]
+  before_action :find_eatery, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :find_review, only: [:show]
+  before_action :find_user_review, only: [:edit, :update, :destroy]
 
   def index
     @reviews = @eatery.reviews
@@ -13,14 +14,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if current_user == @review.user
-      if @review.update_attributes(review_params)
-        redirect_to @eatery, notice: "Successfully updated: #{@review.title}."
-      else
-        render :edit, alert: "Error updating the review."
-      end
+    if @review.update_attributes(review_params)
+      redirect_to @eatery, notice: "Successfully updated: #{@review.title}."
     else
-      flash.now[:alert] = "That's not yours buster."
+      render :edit, alert: "Error updating the review."
     end
   end
 
@@ -39,19 +36,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = current_user.reviews.find params[:id]
-    if current_user == @review.user
-      @review.destroy
-      redirect_to @eatery, notice: "Review successfully deleted."
-    else
-      flash.now[:alert] = "Not yours buster"
-    end
+    @review.destroy
+    redirect_to @eatery, notice: "Review successfully deleted."
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:title, :description)
+    params.require(:review).permit(:title, :description, :price, :portion, :taste)
   end
 
   def find_eatery
@@ -60,6 +52,10 @@ class ReviewsController < ApplicationController
 
   def find_review
     @review = @eatery.reviews.find params[:id]
+  end
+
+  def find_user_review
+    @review = current_user.reviews.find params[:id]
   end
 
 end

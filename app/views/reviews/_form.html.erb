@@ -1,0 +1,16 @@
+<div class= "row">
+  <div class= "col-xs-12 col-md-6 well">
+    <%= bootstrap_form_for [@eatery, @review], class: "form-horizontal" do |f| %>
+      
+        <%= f.text_field :title, input_html: { class: 'form-control' } %>
+        <div class="price-display pull-right"></div>
+        <%= f.range_field :price, in: 1..10, step: 1, id: "price" %>
+        <div class="portion-display pull-right"></div>
+        <%= f.range_field :portion, in: 1..10, step: 1, id: "portion" %>
+        <div class="taste-display pull-right"></div>
+        <%= f.range_field :taste, in: 1..10, step: 1, id: "taste" %>
+        <%= f.text_area :description, input_html: { class: 'form-control' } %>
+        <%= f.button :submit, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

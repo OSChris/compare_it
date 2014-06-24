@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+             :controllers => { registrations: "my_devise/registrations" }
+  
+  resources :profiles, only: [:show, :edit, :update]
   
   resources :eateries do 
     resources :reviews

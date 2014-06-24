@@ -1,0 +1,16 @@
+<%= link_to "Back", @eatery, class: "btn btn-primary" %>
+<br>
+<br>
+<h2>List of Reviews for <%= @eatery.name %></h2>
+<% @eatery.reviews.each_slice(3) do |review_group| %>
+  <div class="row">
+    <% review_group.each do |review| %>
+      <div class= "well col-xs-8 col-md-4">
+        <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
+        <p><%= simple_format truncate(review.description, length: 200) %></p>
+        <hr>
+        <strong>Average Score: <h4><%= average(review) %></h4></strong>
+      </div>
+    <% end %>
+  </div>
+<% end %>
