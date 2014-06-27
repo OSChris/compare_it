@@ -1,12 +1,25 @@
-@import "bootstrap";
-@import "bootstrap/theme";
+@import "bootswatch/amelia/variables";
 
-.review-box {
-  border: 3px dotted;
-  width: 33%;
-  height: 10%;
-}
+// Then bootstrap itself
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+// And finally bootswatch style itself
+@import "bootswatch/amelia/bootswatch";
+
 
 .getaway {
   margin: 10px 0 10px 0;
+}
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
 }

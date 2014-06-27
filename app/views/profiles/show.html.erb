@@ -1,0 +1,20 @@
+<div id="profile-wrapper">
+  <div class="well col-xs-12 col-md-10 col-md-offset-1">
+    <div class="row">
+      <div id="profile-avatar" class="col-xs-12 col-md-4">
+        <% if @profile.avatar.present? %>
+          <%= image_tag @profile.avatar.url(:medium) %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        <h2><%= @profile.user.full_name%>'s Profile</h2>
+        <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-warning" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <p><%= simple_format @profile.bio %></p>
+      </div>
+    </div>
+  </div>
+</div>

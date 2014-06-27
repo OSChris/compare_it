@@ -8,6 +8,8 @@ class EateriesController < ApplicationController
 
   def show
     @review = Review.new
+    @gallery = @eatery.gallery
+    @pictures = @gallery.pictures.limit(6)
   end
 
   def import

@@ -1,0 +1,6 @@
+<div class="well col-xs-12 col-md-8">
+  <%= bootstrap_form_for [@gallery,@picture], class: "form-horizontal" do |f| %>
+    <%= f.file_field :picture %>
+    <%= f.submit "Upload Image" %>
+  <% end %>
+</div>

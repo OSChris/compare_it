@@ -5,5 +5,17 @@
     <h2>Review <%= @eatery.name %></h2>
   </div>
 </div>
-<%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
-<%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
+<div class="getaway">
+  <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
+  <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
+</div>
+
+<%= link_to "More Photos", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-md-6 transitions-enabled" id="gallery-show">
+  <% @gallery.pictures.each do |pic| %>
+    <div class="well">
+      <%= image_tag pic.picture.url(:medium) %>
+    </div>
+  <% end %>
+</div>

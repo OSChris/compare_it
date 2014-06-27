@@ -1,0 +1,9 @@
+<%= link_to "Back", [@picture.gallery.eatery, @picture.gallery], class: "btn btn-primary" %>
+<div class="well">
+  <%= image_tag @picture.picture.url(:large) %>
+  <% if @picture.user == current_user %>
+    <div class="row">
+      <%= button_to "Delete", [@gallery, @picture], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger getaway" %>
+    </div>
+  <% end %>
+</div>

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   
   resources :eateries do 
     resources :reviews
+    resources :galleries, only: [:index, :show]
     collection { post  :import }
+  end
+
+  resources :galleries, only: [] do 
+    resources :pictures, except: [:edit, :update]
   end
 
   root 'eateries#index'

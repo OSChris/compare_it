@@ -5,23 +5,20 @@
     <p><%= simple_format @review.description %></p>
     <hr>
 
-<!--- 
-  TODO: FIX THESE MOTHERFUCKING PROGRESS BARS
--->
 
+<h3 style="text-align: center;"><strong>Price: <%= @review.price %></strong></h3>
 <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-success pricebar" role="progressbar" aria-valuenow="#{price}" aria-valuemin="0" aria-valuemax="10" style="width: 90%;" >
-    <strong>Price: <%= @review.price %></strong> 
+  <div class="progress-bar progress-bar-success pricebar" role="progressbar" aria-valuenow="<%= price(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= price_percent(@review) %>%;" >
   </div>
 </div>
+<h3 style="text-align: center;"><strong>Portion: <%= @review.portion %></strong></h3>
 <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-info portionbar" role="progressbar" aria-valuenow="#{portion}" aria-valuemin="0" aria-valuemax="10" style="width: 90%;" >
-    <strong>Portion: <%= @review.portion %> </strong> 
+  <div class="progress-bar progress-bar-info portionbar" role="progressbar" aria-valuenow="<%= portion(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= portion_percent(@review) %>%;" >
   </div>
 </div>
+<h3 style="text-align: center;"><strong>Taste: <%= @review.taste %></strong></h3>
 <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-warning tastebar" role="progressbar" aria-valuenow="#{taste}" aria-valuemin="0" aria-valuemax="10" style="width: 90%;" >
-    <strong>Taste: <%= @review.taste %> </strong> 
+  <div class="progress-bar progress-bar-warning tastebar" role="progressbar" aria-valuenow="<%= taste(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= taste_percent(@review) %>%;" >
   </div>
 </div>    
     <div class="row">

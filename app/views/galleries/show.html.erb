@@ -1,0 +1,15 @@
+<h1><%= link_to "Gallery for #{@gallery.eatery.name}", @gallery.eatery %></h1>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <%= link_to "Add Photo", new_gallery_picture_path(@gallery, Picture.new), class: "btn btn-success getaway" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 transitions-enabled" id="gallery-show">
+    <% @pictures.each do |picture| %>
+      <div class="well"%>
+        <%= link_to image_tag(picture.picture.url(:medium)), [@gallery,picture] %>
+      </div>
+    <% end %>
+  </div>
+</div>
