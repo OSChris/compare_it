@@ -8,6 +8,7 @@
         </div>
         <div class="col-xs-6 col-md-3 pull-right">
           <h3>Reviews: <%= eatery.reviews.count%></h3>
+          <small><strong>Score: <%= eatery_score(eatery) %></strong></small>
         </div>
       </div>
       <small class="address"><%= eatery.address %></small>

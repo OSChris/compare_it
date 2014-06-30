@@ -1,13 +1,13 @@
 module EateriesHelper
-  # Need to figure out a more elegant solution to average score.
-  # def eatery_averager(eatery)
-  #   if eatery.reviews != 0
-  #     eatery.reviews.map do |review|
-  #       average(review).to_f
-  #     end.inject do |sum, x|
-  #       (sum / eatery.reviews.count) + x
-  #     end
-  #   end
-  # end
+  def eatery_score(eatery)
+    if eatery.reviews.count > 0
+      total = 0
+      eatery.reviews.each do |review|
+        total += average(review).to_f
+      end
+      score = total / eatery.reviews.count
+      '%.2f' % score.to_f
+    end
+  end
 
 end
