@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Paperclip for attaching images to objects
+# Paperclip for attaching files to objects
 gem "paperclip", "~> 4.1"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

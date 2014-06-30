@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :new, :create, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :new, :create, :destroy, :like]
   before_action :find_eatery, only: [:index, :show, :new, :create, :edit, :update, :destroy, :like]
   before_action :find_review, only: [:show, :like]
   before_action :find_user_review, only: [:edit, :update, :destroy]
