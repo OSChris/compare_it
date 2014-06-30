@@ -27,6 +27,7 @@ gem 'devise', '~> 3.2.4'
 
 # Paginations
 gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # Nicer forms
 gem 'bootstrap_form'
 gem 'country_select'

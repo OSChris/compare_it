@@ -3,7 +3,7 @@ class EateriesController < ApplicationController
   before_action :find_eatery, only: [:show, :like]
 
   def index
-    @eateries = Eatery.all
+    @eateries = Eatery.paginate(page: params[:page])
   end
 
   def show

@@ -11,6 +11,7 @@ class Eatery < ActiveRecord::Base
   has_one :gallery, dependent: :destroy
   has_many :pictures, through: :gallery
 
+  self.per_page = 10
 
   require 'csv'
 
