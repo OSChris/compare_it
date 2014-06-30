@@ -19,9 +19,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+# Acts as voteable for the polymorphic associations for Like
+gem 'acts_as_votable', '~> 0.10.0'
+# Devise for user authentication
 gem 'devise', '~> 3.2.4'
-gem 'haml-rails'
+
+# Paginations
 gem 'will_paginate'
+# Nicer forms
 gem 'bootstrap_form'
 gem 'country_select'
 # Use jquery as the JavaScript library

@@ -4,11 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  has_many :likes, dependent: :destroy
-  has_many :eateries, through: :likes
-  has_many :liked_pictures, through: :likes, source: :picture
-  has_many :liked_reviews, through: :likes, source: :review
+  acts_as_voter
 
   has_many :reviews, dependent: :destroy
 

@@ -5,7 +5,7 @@
 <% @eatery.reviews.each_slice(3) do |review_group| %>
   <div class="row">
     <% review_group.each do |review| %>
-      <div class= "well col-xs-8 col-md-4" style="min-height: 100%;">
+      <div class= "well col-xs-8 col-md-4">
         <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
         <p><%= simple_format truncate(review.description, length: 200) %></p>
         <hr>

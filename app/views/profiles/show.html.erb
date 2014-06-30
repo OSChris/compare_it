@@ -12,6 +12,20 @@
       </div>
     </div>
     <div class="row">
+    <div class="row getaway">
+      <% if user_signed_in? %>
+        <% if current_user.voted_for? @profile %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", profile_like_path(@profile), method: :post, class: "btn btn-success btn-sm" %>
+          </div>
+        <% else %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Like", profile_like_path(@profile), method: :post, class: "btn btn-warning btn-sm" %>
+          </div>
+        <% end %>
+      <% end %>
+      <ul class="list-group col-xs-4 col-sm-3 col-md-2">
+        <li class="list-group-item">Likes: <span class="badge"><%= @profile.votes_for.size %></span></li>
+      </ul>
+    </div>
       <div class="col-xs-12 col-md-8 col-md-offset-2">
         <p><%= simple_format @profile.bio %></p>
       </div>

@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     resources :pictures, except: [:edit, :update]
   end
 
+  post 'eateries/:eatery_id/reviews/:id' => "reviews#like", as: 'eatery_review_like'
+  post 'galleries/:gallery_id/pictures/:id' => "pictures#like", as: 'gallery_picture_like'
+  post 'eateries/:id' => "eateries#like", as: "eatery_like"
+  post 'profiles/:id' => "profiles#like", as: "profile_like"
+
   root 'eateries#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

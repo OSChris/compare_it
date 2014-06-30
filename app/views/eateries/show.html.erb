@@ -1,6 +1,21 @@
 <div class="row">
   <div class="col-xs-12 col-md-8"> 
-    <h1><%= @eatery.name %></h1><small><%= @eatery.address %></small>
+    <h1><%= @eatery.name %></h1>
+    <div class="row">
+      <% if user_signed_in? %>
+        <% if current_user.voted_for? @eatery %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", eatery_like_path(@eatery), method: :post, class: "btn btn-success btn-sm" %>
+          </div>
+        <% else %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Like", eatery_like_path(@eatery), method: :post, class: "btn btn-warning btn-sm" %>
+          </div>
+        <% end %>
+      <% end %>
+      <ul class="list-group col-xs-4 col-sm-3 col-md-2">
+        <li class="list-group-item">Likes: <span class="badge"><%= @eatery.votes_for.size %></span></li>
+      </ul>
+    </div>
+    <h4><%= @eatery.address %></h4>
     <p><%= @eatery.description %></p>
     <h2>Review <%= @eatery.name %></h2>
   </div>
@@ -10,10 +25,10 @@
   <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
 </div>
 
-<%= link_to "More Photos", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+<%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
 <div class="clearfix"></div>
 <div class="col-xs-12 col-md-6 transitions-enabled" id="gallery-show">
-  <% @gallery.pictures.each do |pic| %>
+  <% @pictures.each do |pic| %>
     <div class="well">
       <%= image_tag pic.picture.url(:medium) %>
     </div>

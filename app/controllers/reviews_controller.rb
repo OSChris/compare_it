@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :find_eatery, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :find_review, only: [:show]
+  before_action :authenticate_user!, only: [:edit, :update, :new, :create, :destroy]
+  before_action :find_eatery, only: [:index, :show, :new, :create, :edit, :update, :destroy, :like]
+  before_action :find_review, only: [:show, :like]
   before_action :find_user_review, only: [:edit, :update, :destroy]
 
   def index
@@ -38,6 +39,16 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     redirect_to @eatery, notice: "Review successfully deleted."
+  end
+
+  def like
+    if current_user.voted_for? @review
+      @review.unliked_by current_user
+      redirect_to [@eatery, @review]
+    else
+      @review.liked_by current_user
+      redirect_to [@eatery, @review]
+    end
   end
 
   private

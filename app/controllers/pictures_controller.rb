@@ -1,8 +1,8 @@
 class PicturesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :destroy, :like]
   before_action :find_gallery
-  before_action :find_picture, only: [:show]
+  before_action :find_picture, only: [:show, :like]
   before_action :find_user_picture, only: [:destroy]
 
   def index
@@ -30,6 +30,16 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     redirect_to [@gallery.eatery, @gallery], notice: "Picture deleted."
+  end
+
+  def like
+    if current_user.voted_for? @picture
+      @picture.unliked_by current_user
+      redirect_to [@gallery, @picture]
+    else
+      @picture.liked_by current_user
+      redirect_to [@gallery, @picture]
+    end
   end
 
   private
