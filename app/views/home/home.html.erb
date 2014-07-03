@@ -1,0 +1,65 @@
+<h1>Compare it to Kent's!</h1>
+
+<div class="row">
+  <div class="col-md-6 getaway">
+    <div style="width: 100%; height: 200px; background-color: grey;" class="col-md-6 col-xs-8"></div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-md-6"
+    <p>How do the eateries you've visited compare to Kent's Kitchen? It is the opinion of the world renowned food connoisseur Andrew that Ken's has the best PPT™ of any eatery in Vancouver. </p>
+  </div>
+</div>
+<div class="row">
+  
+  <div class="col-md-6">
+    <blockquote class="pull-right">
+      <p>My life has gotten so much better ever since I put Kent's inside me.</p>
+      <small><cite title="Josh">Josh</cite></small>
+    </blockquote>
+    <blockquote>
+      <p>A revolutionary revolutionizing revolution of groundbreakingness.</p>
+      <small><cite title="Chris">My Landlord Larry</cite></small>
+    </blockquote>
+    <blockquote>
+      <p>Why would you set the bar so low??</p>
+      <small><cite title="Tammam Kbeili">Tam </cite></small>
+    </blockquote>
+  </div>
+  
+  <div class="row col-md-9 pull-left">
+    <h2>The Most Talked About Eateries</h2>
+    <% @popular_eats.each_slice(4) do |pop_group| %>
+      <div class="row">
+        <% pop_group.each do |pop| %>
+          <div class="well col-md-3">
+            <h3><%= pop.name %></h3>
+            <small><strong><%= pop.address %></strong></small>
+            <p>Reviews: <%= pop.reviews.count %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h2>Hall of Fame</h2>
+    <% @hall_of_fame.each do |hof| %>
+      <div class="well">
+        <h4><%= link_to hof.name, hof %></h4>
+        <small><strong><%= hof.address %></strong></small>
+        <p>Score: <%= '%.2f' % hof.total_average %></p>
+      </div>
+    <% end %>
+    <hr>
+    <h2>Hall of Shame</h2>
+    <% @hall_of_shame.each do |hos| %>
+      <div class="well">
+        <h4><%= link_to hos.name, hos %></h4>
+        <small><strong><%= hos.address %></strong></small>
+        <p>Score: <%= '%.2f' % hos.total_average %></p>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+

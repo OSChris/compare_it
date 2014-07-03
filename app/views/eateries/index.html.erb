@@ -1,14 +1,14 @@
 <h1>All of the Eateries!</h1>
 <div class="row">
   <% @eateries.each do |eatery| %>
-    <div class="well col-xs-12 col-md-8">
+    <div class="well col-md-8">
       <div class="row">
-        <div class="col-xs-6 col-md-6">
+        <div class="col-md-6">
           <h2><%= link_to eatery.name, eatery %></h2>
         </div>
-        <div class="col-xs-6 col-md-3 pull-right">
+        <div class="col-md-3 pull-right">
           <h3>Reviews: <%= eatery.reviews.count%></h3>
-          <small><strong>Score: <%= eatery_score(eatery) %></strong></small>
+          <small><strong>Score: <%= '%.2f' % (eatery.total_average) %></strong></small>
         </div>
       </div>
       <small class="address"><%= eatery.address %></small>
@@ -17,5 +17,10 @@
   <% end %>
 </div>
 <div class="row">
-  <%= will_paginate @eateries %>
+  <div class="page_info">
+    <%= page_entries_info @eateries %>
+  </div>
+  <div class="col-md-12">
+    <%= will_paginate @eateries %>
+  </div>
 </div>

@@ -1,20 +1,23 @@
 <%= link_to "Back", [@picture.gallery.eatery, @picture.gallery], class: "btn btn-primary" %>
-<div class="well" style="width:80%; margin: auto;">
+<div class="clearfix"></div>
+<div class="well col-md-10">
   <div class="row">
     <% if user_signed_in? %>
       <% if current_user.voted_for? @picture %>
-        <div class="col-xs-4 col-md-2"><%= link_to "Unlike", gallery_picture_like_path(@gallery, @picture), method: :post, class: "btn btn-success btn-sm" %>
+        <div class="col-md-2"><%= link_to "Unlike", gallery_picture_like_path(@gallery, @picture), method: :post, class: "btn btn-success btn-sm" %>
         </div>
       <% else %>
-        <div class="col-xs-4 col-md-2"><%= link_to "Like", gallery_picture_like_path(@gallery, @picture), method: :post, class: "btn btn-warning btn-sm" %>
+        <div class="col-md-2"><%= link_to "Like", gallery_picture_like_path(@gallery, @picture), method: :post, class: "btn btn-warning btn-sm" %>
         </div>
       <% end %>
     <% end %>
-    <ul class="list-group col-xs-4 col-sm-3 col-md-2">
+    <ul class="list-group col-md-2">
       <li class="list-group-item">Likes: <span class="badge"><%= @picture.votes_for.size %></span></li>
     </ul>
   </div>
+  
   <%= image_tag @picture.picture.url(:large) %>
+  
   <% if @picture.user == current_user %>
       <%= button_to "Delete", [@gallery, @picture], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger getaway" %>
   <% end %>

@@ -13,6 +13,14 @@ class Eatery < ActiveRecord::Base
 
   self.per_page = 10
 
+  scope :popular_eats, -> { select("eateries.*, COUNT(votes.id) vote_count").
+                            joins("LEFT OUTER JOIN votes ON votes.votable_id = eateries.id AND votes.votable_type = 'Eatery'").
+                            group("eateries.id").
+                            order("vote_count DESC") }
+                            
+  scope :hall_of_fame, -> { where("total_average > 7.0")}
+  scope :hall_of_shame, -> { where("total_average < 3.5").order("total_average DESC")}
+
   require 'csv'
 
   def self.import(file)
@@ -30,6 +38,11 @@ class Eatery < ActiveRecord::Base
       end # end if !eatery.nil?
     end # end CSV.foreach
   end # end self.import(file)
+
+  def update_averages
+    self.total_average = (self.reviews.average(:price) + self.reviews.average(:portion) + self.reviews.average(:taste)) / 3 
+    self.save
+  end
 
 
 end

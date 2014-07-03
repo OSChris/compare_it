@@ -1,9 +1,10 @@
 class EateriesController < ApplicationController
 
   before_action :find_eatery, only: [:show, :like]
+  before_action :authenticate_user!, only: [:like]
 
   def index
-    @eateries = Eatery.paginate(page: params[:page])
+    @eateries = Eatery.paginate(page: params[:page]).order("total_average DESC")
   end
 
   def show
