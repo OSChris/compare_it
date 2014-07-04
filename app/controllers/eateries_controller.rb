@@ -28,6 +28,10 @@ class EateriesController < ApplicationController
     end
   end
 
+  def importer
+    render :importer
+  end
+
   private
 
   def find_eatery

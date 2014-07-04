@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'home' => "home#home", as: 'home'
+  get 'importer' => "eateries#importer", as: ''
 
   devise_for :users,
              :controllers => { registrations: "my_devise/registrations" }
