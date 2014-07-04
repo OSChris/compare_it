@@ -20,3 +20,14 @@ How costly is the food compared to Kent's? The lower the score the more expensiv
 ### Portion
 
 How big are the portions? 
+
+Features still TODO 
+-------------------
+
+* Home page
+* Visual comparison to Kent's on each eatery show page
+* AngularJS
+* AJAX and other JS features
+* Lightbox for picture viewing
+* Maps Display
+* Logo for eateries that have available ones
