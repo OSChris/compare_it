@@ -32,9 +32,7 @@ class Eatery < ActiveRecord::Base
       if eatery.count == 1
         eatery.first.update_attributes(eatery_hash)
       else
-        e = Eatery.create!(eatery_hash)
-        e
-        e.gallery.create
+        Eatery.create!(eatery_hash)
       end # end if !eatery.nil?
     end # end CSV.foreach
   end # end self.import(file)
