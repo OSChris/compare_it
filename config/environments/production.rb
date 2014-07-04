@@ -58,6 +58,10 @@ Rails.application.configure do
     }
   }
 
+  # Mailer info
+  config.action_mailer.default_url_options = { host: 'http://citkents.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 

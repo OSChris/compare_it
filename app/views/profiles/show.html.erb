@@ -7,7 +7,7 @@
         <% end %>
       </div>
       <div class="col-xs-12 col-md-8">
-        <h2><%= @profile.user.full_name%>'s Profile</h2>
+        <h2><%= @profile.user.full_name %>'s Profile</h2>
         <% if current_user == @profile.user %>
           <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-warning" %>
         <% end %>
