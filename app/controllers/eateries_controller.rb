@@ -15,7 +15,7 @@ class EateriesController < ApplicationController
 
   def import
     Eatery.import(params[:file])
-    redirect_to root_url, notice: "Eateries imported."
+    redirect_to eateries_path, notice: "Eateries imported."
   end
 
   def like
