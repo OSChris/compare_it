@@ -21,6 +21,9 @@ class Eatery < ActiveRecord::Base
   scope :hall_of_fame, -> { where("total_average > 7.0")}
   scope :hall_of_shame, -> { where("total_average < 3.5").order("total_average DESC")}
 
+  geocoded_by :address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   require 'csv'
 
   def self.import(file)
