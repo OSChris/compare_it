@@ -41,7 +41,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # For Heroku
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'aws-sdk'
+end
 
 group :development do
   gem 'letter_opener'

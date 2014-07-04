@@ -48,6 +48,16 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
+  # Paperclip settings
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['s3_bucket'],
+    :access_key_id => ENV['s3_acces_key_id'],
+    :secret_access_key => ENV['s3_secret_access_key_id']
+    }
+  }
+
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
