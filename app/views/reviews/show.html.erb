@@ -1,4 +1,6 @@
-<%= link_to "Back to #{@review.eatery.name}", @review.eatery, class: "btn btn-primary getaway" %>
+<div class="col-md-offset-2">
+  <%= link_to "Back", eatery_reviews_path(@review.eatery), class: "btn btn-primary getaway" %>
+</div>
 <div class="row">
   <div class="well col-xs-12 col-md-8 col-md-offset-2">
     <div class="row">
@@ -14,6 +16,9 @@
       <ul class="list-group col-xs-4 col-sm-3 col-md-2">
         <li class="list-group-item">Likes: <span class="badge"><%= @review.votes_for.size %></span></li>
       </ul>
+      <div class="pull-right teenyweeny">
+        By: <%= link_to @review.user.full_name, @review.user.profile %>
+      </div>
     </div>
     <h1><%= @review.title %></h1>
     <p><%= simple_format @review.description %></p>
