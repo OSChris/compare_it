@@ -37,4 +37,8 @@ module ReviewsHelper
     end
   end
 
+  def number_of_likes(review)
+    review.votes_for.size
+  end
+
 end

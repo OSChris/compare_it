@@ -7,7 +7,7 @@
     <% review_group.each do |review| %>
       <div class= "well col-md-4">
         <div class="user-window pull-right">
-          By: <%= link_to review.user.full_name, review.user.profile, class: "teenyweeny" %>
+          By: <%= link_to review.full_name, review.profile, class: "teenyweeny" %>
         </div>
         <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
         <p><%= simple_format truncate(review.description, length: 200) %></p>

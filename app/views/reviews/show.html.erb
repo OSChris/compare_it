@@ -6,18 +6,20 @@
     <div class="row">
       <% if user_signed_in? %>
         <% if current_user.voted_for? @review %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-success btn-sm" %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", 
+          eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-success btn-sm" %>
           </div>
         <% else %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Like", eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-warning btn-sm" %>
+          <div class="col-xs-4 col-md-2"><%= link_to "Like", 
+          eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-warning btn-sm" %>
           </div>
         <% end %>
       <% end %>
       <ul class="list-group col-xs-4 col-sm-3 col-md-2">
-        <li class="list-group-item">Likes: <span class="badge"><%= @review.votes_for.size %></span></li>
+        <li class="list-group-item">Likes: <span class="badge"><%= number_of_likes(@review) %></span></li>
       </ul>
       <div class="pull-right teenyweeny">
-        By: <%= link_to @review.user.full_name, @review.user.profile %>
+        By: <%= link_to @review.full_name, @review.profile %>
       </div>
     </div>
     <h1><%= @review.title %></h1>

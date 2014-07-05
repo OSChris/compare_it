@@ -8,6 +8,8 @@ class Review < ActiveRecord::Base
   
   after_save :update_eatery_averages
 
+  delegate :profile, :full_name, to: :user
+
   private
 
   def update_eatery_averages
