@@ -14,6 +14,9 @@
     <ul class="list-group col-md-2 getaway">
       <li class="list-group-item">Likes: <span class="badge"><%= @picture.votes_for.size %></span></li>
     </ul>
+    <div class="pull-right" style="margin-right: 5px;">
+      Uploaded by: <%= @picture.full_name %>
+    </div>
   </div>
   
   <%= image_tag @picture.picture.url(:large) %>

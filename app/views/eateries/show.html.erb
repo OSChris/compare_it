@@ -17,6 +17,9 @@
     </div>
     
     <h4><%= @eatery.address %></h4>
+    <div style="width: 800px;">
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
     <p><%= @eatery.description %></p>
     <hr>
     <h2>Review <%= @eatery.name %></h2>
@@ -38,3 +41,14 @@
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw generate_map_json([@eatery]).to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+
+</script>

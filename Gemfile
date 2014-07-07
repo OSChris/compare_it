@@ -45,6 +45,7 @@ gem 'geocoder'
 
 # Google Maps displays
 gem 'gmaps4rails'
+gem 'underscore-rails'
 
 # For Heroku
 group :production do
