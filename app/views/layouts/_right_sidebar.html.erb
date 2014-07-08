@@ -1,0 +1,44 @@
+<div class="panel-group" id="accordion">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Popular Eateries
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <% popular_eats.each do |pop| %>
+          <div class="well">
+            <h4><%= link_to pop.name, pop %></h4>
+            <small><%= pop.address %></small>
+            <br>
+            <strong>Likes: <%= pop.votes_for.count %></strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Hall of Fame  
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <% hall_of_fame.each do |hof| %>
+          <div class="well">
+            <h4><%= link_to hof.name, hof %></h4>
+            <small><%= hof.address %></small>
+            <br>
+            <strong>Score: <%= '%.2f' % (hof.total_average) %></strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

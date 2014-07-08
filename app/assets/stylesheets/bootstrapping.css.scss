@@ -1,14 +1,28 @@
-@import "bootswatch/cosmo/variables";
+$theme: #C9F5DC;
+$darker-theme: #07853D;
+$border-radius-base: 0px;
+$body-bg: white;
+$text-color: $darker-theme;
+$brand-primary: $darker-theme;
+$navbar-default-bg: $darker-theme;
+$navbar-default-color: white;
+$navbar-default-link-color: white;
 
-// Then bootstrap itself
+
 @import "bootstrap";
-
 // Bootstrap body padding for fixed navbar
 body { padding-top: 60px; }
 
-// And finally bootswatch style itself
-@import "bootswatch/cosmo/bootswatch";
-
+.well {
+  color: black;
+}
+.list-group-item {
+  color: black;
+}
+.navbar-brand {
+  font-size: 2.1em;
+  font-weight: bold;
+}
 
 .getaway {
   margin: 10px 0 10px 0;
@@ -19,21 +33,8 @@ body { padding-top: 60px; }
   font-size: 0.8em;
 }
 
-.user-window {
-}
-
 .address {
   font-style: italic;
-}
-
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
 }
 
 .range-field {

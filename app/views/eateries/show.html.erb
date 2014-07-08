@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-xs-12 col-md-8"> 
-    <h1><%= @eatery.name %></h1>
+  <div class="col-xs-12 col-md-12"> 
+    <h2><%= @eatery.name %></h2>
     <div class="row">
       <% if user_signed_in? %>
         <% if current_user.voted_for? @eatery %>
@@ -17,30 +17,31 @@
     </div>
     
     <h4><%= @eatery.address %></h4>
-    <div style="width: 800px;">
-      <div id="map" style='width: 800px; height: 400px;'></div>
+    <div class="col-md-12">
+      <div id="map" class="col-md-12 child"></div>
     </div>
     <p><%= @eatery.description %></p>
     <hr>
     <h2>Review <%= @eatery.name %></h2>
   
   </div>
+
+  <div class="getaway">
+    <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
+    <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
+  </div>
+
+  <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+  <div class="clearfix"></div>
+  <div class="col-xs-12 col-md-12 transitions-enabled" id="gallery-show">
+    <% @pictures.each do |pic| %>
+      <div class="well">
+        <%= image_tag pic.picture.url(:medium) %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div class="getaway">
-  <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
-  <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
-</div>
-
-<%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
-<div class="clearfix"></div>
-<div class="col-xs-12 col-md-6 transitions-enabled" id="gallery-show">
-  <% @pictures.each do |pic| %>
-    <div class="well">
-      <%= image_tag pic.picture.url(:medium) %>
-    </div>
-  <% end %>
-</div>
 
 <script type="text/javascript">
   
@@ -49,6 +50,7 @@
     markers = handler.addMarkers(<%= raw generate_map_json([@eatery]).to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
   });
 
 </script>

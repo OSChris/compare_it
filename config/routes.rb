@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'importer' => "eateries#importer", as: ''
 
   devise_for :users,
-             :controllers => { registrations: "my_devise/registrations" }
+             :controllers => { registrations: "my_devise/registrations",
+                               omniauth_callbacks: "users/omniauth_callbacks" }
   
   resources :profiles, only: [:show, :edit, :update]
   

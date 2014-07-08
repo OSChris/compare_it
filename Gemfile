@@ -24,6 +24,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'acts_as_votable', '~> 0.10.0'
 # Devise for user authentication
 gem 'devise', '~> 3.2.4'
+# OmniAuth for social media integration
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 # Paginations
 gem 'will_paginate'

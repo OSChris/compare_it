@@ -11,6 +11,9 @@
 /config/initializers/email_vars.rb
 /config/initializers/s3_vars.rb
 
+# Secrets
+/config/secrets.yml
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal

@@ -7,6 +7,8 @@ ready = ->
       $('#gallery-show').masonry
         itemSelector: '.well'
         isFitWidth: true
+    cw = $('.child').width() / 2
+    $(".child").css height: cw + "px"
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
