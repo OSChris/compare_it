@@ -1,8 +1,8 @@
-<div class="col-md-offset-2">
+<div>
   <%= link_to "Back", eatery_reviews_path(@review.eatery), class: "btn btn-primary getaway" %>
 </div>
 <div class="row">
-  <div class="well col-xs-12 col-md-8 col-md-offset-2">
+  <div class="well col-xs-12 col-md-12">
     <div class="row">
       <% if user_signed_in? %>
         <% if current_user.voted_for? @review %>
@@ -25,31 +25,16 @@
     <h1><%= @review.title %></h1>
     <p><%= simple_format @review.description %></p>
     <hr>
-
-
-<h3 style="text-align: center;"><strong>Price: <%= @review.price %></strong></h3>
-<div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-success pricebar" role="progressbar" aria-valuenow="<%= price(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= price_percent(@review) %>%;" >
-  </div>
-</div>
-<h3 style="text-align: center;"><strong>Portion: <%= @review.portion %></strong></h3>
-<div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-info portionbar" role="progressbar" aria-valuenow="<%= portion(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= portion_percent(@review) %>%;" >
-  </div>
-</div>
-<h3 style="text-align: center;"><strong>Taste: <%= @review.taste %></strong></h3>
-<div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-warning tastebar" role="progressbar" aria-valuenow="<%= taste(@review) %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= taste_percent(@review) %>%;" >
-  </div>
-</div>    
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <%= %>
-        <% if current_user == @review.user %>
-          <%= link_to "Edit", edit_eatery_review_path, class: "btn btn-info" %>
-          <%= link_to "Delete", eatery_review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-        <% end %>
+    <%= render "reviews/review_bars" %>
+    
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <%= %>
+          <% if current_user == @review.user %>
+            <%= link_to "Edit", edit_eatery_review_path, class: "btn btn-info" %>
+            <%= link_to "Delete", eatery_review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
       </div>
-    </div>
   </div>
 </div>

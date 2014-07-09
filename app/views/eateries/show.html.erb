@@ -17,28 +17,31 @@
     </div>
     
     <h4><%= @eatery.address %></h4>
-    <div class="col-md-12">
+    <div class="col-md-12 well">
       <div id="map" class="col-md-12 child"></div>
+      <br>
+      <h4>Some words about the eatery</h4>
+      <p><%= @eatery.description %></p>
     </div>
-    <p><%= @eatery.description %></p>
     <hr>
     <h2>Review <%= @eatery.name %></h2>
   
   </div>
+  <div class="col-md-12">
+    <div class="getaway">
+      <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
+      <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
+    </div>
 
-  <div class="getaway">
-    <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
-    <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
-  </div>
-
-  <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
-  <div class="clearfix"></div>
-  <div class="col-xs-12 col-md-12 transitions-enabled" id="gallery-show">
-    <% @pictures.each do |pic| %>
-      <div class="well">
-        <%= image_tag pic.picture.url(:medium) %>
-      </div>
-    <% end %>
+    <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+    <div class="clearfix"></div>
+    <div class="col-xs-12 col-md-12 transitions-enabled" id="gallery-show">
+      <% @pictures.each do |pic| %>
+        <div class="well" style="padding: 2px;">
+          <%= image_tag pic.picture.url(:medium), class: "img-responsive" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

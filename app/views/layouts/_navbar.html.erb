@@ -18,7 +18,7 @@
             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" style="max-height: 50px; padding-top: 8px;">
               <% if current_user.avatar.present? %>
                 <%= image_tag current_user.avatar.url(:tiny), 
-                style: "display: inline-block; border: 2px solid black;" %> 
+                style: "display: inline-block; border: 2px solid black; max-height: 35px;" %> 
               <% end %>
               <%= current_user.full_name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">

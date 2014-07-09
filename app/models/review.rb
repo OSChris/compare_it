@@ -6,14 +6,14 @@ class Review < ActiveRecord::Base
 
   validates :title, :description, :price, :portion, :taste, presence: true
   
-  after_save :update_eatery_averages
+  after_save :update_eatery_total_average
 
   delegate :profile, :full_name, to: :user
 
   private
 
-  def update_eatery_averages
-    self.eatery.update_averages
+  def update_eatery_total_average
+    self.eatery.update_total_average
   end
 
 end

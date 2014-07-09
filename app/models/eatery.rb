@@ -40,10 +40,12 @@ class Eatery < ActiveRecord::Base
     end # end CSV.foreach
   end # end self.import(file)
 
-  def update_averages
+  def update_total_average
+    self.average_price = self.reviews.average(:price)
+    self.average_portion = self.reviews.average(:portion)
+    self.average_taste = self.reviews.average(:taste)
     self.total_average = (self.reviews.average(:price) + self.reviews.average(:portion) + self.reviews.average(:taste)) / 3 
     self.save
   end
-
 
 end

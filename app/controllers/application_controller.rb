@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def popular_eats
-    @popular_eats ||= Eatery.popular_eats.limit(4)
+    @popular_eats ||= Eatery.popular_eats.limit(5)
   end
   helper_method :popular_eats
 
   def hall_of_fame
-    @hall_of_fame = Eatery.hall_of_fame.limit(3)
+    @hall_of_fame = Eatery.hall_of_fame.limit(3).order("total_average DESC")
   end
   helper_method :hall_of_fame
   

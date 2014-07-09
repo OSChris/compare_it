@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708165433) do
+ActiveRecord::Schema.define(version: 20140708233506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,12 @@ ActiveRecord::Schema.define(version: 20140708165433) do
     t.string   "name"
     t.string   "address"
     t.text     "description"
-    t.float    "total_average", default: 0.0
+    t.float    "total_average",   default: 0.0
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "average_taste"
+    t.float    "average_price"
+    t.float    "average_portion"
   end
 
   create_table "galleries", force: true do |t|
