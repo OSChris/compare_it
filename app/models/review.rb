@@ -10,6 +10,11 @@ class Review < ActiveRecord::Base
 
   delegate :profile, :full_name, to: :user
 
+  scope :best_reviews, -> { select("reviews.*, COUNT(votes.id) vote_count").
+                            joins("LEFT OUTER JOIN votes ON votes.votable_id = reviews.id AND votes.votable_type = 'Review'").
+                            group("reviews.id").
+                            order("vote_count DESC") }
+
   private
 
   def update_eatery_total_average
