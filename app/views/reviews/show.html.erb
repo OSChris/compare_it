@@ -1,40 +1,46 @@
 <div class="row">
-  <%= link_to "Back", eatery_reviews_path(@review.eatery), class: "btn btn-primary getaway" %>
+  <div class="col-sm-12">
+    <%= link_to "Back", eatery_reviews_path(@review.eatery), class: "btn btn-primary getaway" %>
+  </div>
 </div>
 <div class="row">
-  <div class="well col-xs-12 col-md-12">
-    <div class="row">
-      <% if user_signed_in? %>
-        <% if current_user.voted_for? @review %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", 
-          eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-success btn-sm" %>
-          </div>
-        <% else %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Like", 
-          eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-warning btn-sm" %>
-          </div>
-        <% end %>
-      <% end %>
-      <ul class="list-group col-xs-4 col-sm-3 col-md-2">
-        <li class="list-group-item">Likes: <span class="badge"><%= number_of_likes(@review) %></span></li>
-      </ul>
-      <div class="pull-right teenyweeny">
-        By: <%= link_to @review.full_name, @review.profile %>
-      </div>
-    </div>
-    <h1><%= @review.title %></h1>
-    <p><%= simple_format @review.description %></p>
-    <hr>
-    <%= render "reviews/review_bars" %>
-    
+  <div class="col-sm-12">
+    <div class="well">
       <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <%= %>
-          <% if current_user == @review.user %>
-            <%= link_to "Edit", edit_eatery_review_path, class: "btn btn-info" %>
-            <%= link_to "Delete", eatery_review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <div class="col-sm-12">
+          <% if user_signed_in? %>
+            <% if current_user.voted_for? @review %>
+              <div class="col-xs-4 col-md-2"><%= link_to "Unlike", 
+              eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-success btn-sm" %>
+              </div>
+            <% else %>
+              <div class="col-xs-4 col-md-2"><%= link_to "Like", 
+              eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-warning btn-sm" %>
+              </div>
+            <% end %>
           <% end %>
+          <ul class="list-group col-xs-4 col-sm-3 col-md-2">
+            <li class="list-group-item">Likes: <span class="badge"><%= number_of_likes(@review) %></span></li>
+          </ul>
+          <div class="pull-right teenyweeny">
+            By: <%= link_to @review.full_name, @review.profile %>
+          </div>
         </div>
       </div>
+      <h1><%= @review.title %></h1>
+      <p><%= simple_format @review.description %></p>
+      <hr>
+      <%= render "reviews/review_bars" %>
+      
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= %>
+            <% if current_user == @review.user %>
+              <%= link_to "Edit", edit_eatery_review_path, class: "btn btn-info" %>
+              <%= link_to "Delete", eatery_review_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>

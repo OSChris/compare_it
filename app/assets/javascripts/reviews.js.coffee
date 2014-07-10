@@ -12,3 +12,5 @@ $ ->
     newValue = $("#taste").val()
     $(".taste-display").text(newValue)
 
+  $(".nav li").hover ->
+    $(@).toggleClass("active")

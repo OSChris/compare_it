@@ -24,9 +24,9 @@
       <p><%= @eatery.description %></p>
     </div>
     <hr>
-    <h2>Review <%= @eatery.name %></h2>
   </div>
   <div class="col-md-12">
+    <h2>Review <%= @eatery.name %></h2>
     <div class="getaway">
       <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
       <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>

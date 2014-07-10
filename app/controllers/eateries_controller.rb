@@ -4,7 +4,7 @@ class EateriesController < ApplicationController
   before_action :authenticate_user!, only: [:like]
 
   def index
-    @eateries = Eatery.paginate(page: params[:page]).order("total_average DESC")
+    @eateries = Eatery.paginate(page: params[:page]).order("total_average DESC").search(params[:search])
   end
 
   def show

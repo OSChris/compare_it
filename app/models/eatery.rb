@@ -48,4 +48,16 @@ class Eatery < ActiveRecord::Base
     self.save
   end
 
+  private
+
+  def self.search(search)
+    if search
+      search = "%#{search}%"
+      where("eateries.name ILIKE ? OR eateries.address ILIKE ?",
+      search, search)
+    else
+      all
+    end
+  end
+
 end
