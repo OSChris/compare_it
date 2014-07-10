@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     provider.nil?
   end
 
+  def authenticated_twitter?
+    uid.present? && provider == "twitter"
+  end
+
   def self.find_or_create_from_twitter(oauth_data)
     user = User.where(provider: :twitter, uid: oauth_data["uid"]).first
 

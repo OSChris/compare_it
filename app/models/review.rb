@@ -1,4 +1,7 @@
 class Review < ActiveRecord::Base
+  
+  attr_accessor :tweet_it
+
   belongs_to :user
   belongs_to :eatery
 
@@ -7,6 +10,8 @@ class Review < ActiveRecord::Base
   validates :title, :description, :price, :portion, :taste, presence: true
   
   after_save :update_eatery_total_average
+
+  after_initialize :set_defaults
 
   delegate :profile, :full_name, to: :user
 
@@ -19,6 +24,10 @@ class Review < ActiveRecord::Base
 
   def update_eatery_total_average
     self.eatery.update_total_average
+  end
+
+  def set_defaults
+    self.tweet_it = true
   end
 
 end

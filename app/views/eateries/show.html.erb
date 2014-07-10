@@ -32,33 +32,37 @@
       <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
     </div>
     <div class="row">
-      <h3>Top Reviews for <%= @eatery.name %></h3>
-      <% @top_reviews.each do |review| %>
-      <div class= "well col-md-4">
-        <div class="pull-left teenyweeny">
-          Likes: <%= review.votes_for.count %>
-        </div>
-        <div class="user-window pull-right">
-          By: <%= link_to review.full_name, review.profile, class: "teenyweeny" %>
-        </div>
-        <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
-        <p><%= simple_format truncate(review.description, length: 200) %></p>
-        <hr>
-        <strong>Average Score: <h4><%= average(review) %></h4></strong>
-        <div class="progress" style="border: 1px solid;">
-          <div class="progress-bar progress-bar-danger avgbar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: <%= average_bar(review) %>%; border: 1px solid black;" >
+      <div class="col-sm-12">
+        <h3>Top Reviews for <%= @eatery.name %></h3>
+        <% @top_reviews.each do |review| %>
+        <div class= "well col-md-4 top-reviews">
+          <div class="pull-left teenyweeny">
+            Likes: <%= review.votes_for.count %>
+          </div>
+          <div class="user-window pull-right">
+            By: <%= link_to review.full_name, review.profile, class: "teenyweeny" %>
+          </div>
+          <h3><%= link_to truncate(review.title, length: 30), eatery_review_path(@eatery, review) %></h3>
+          <p><%= simple_format truncate(review.description, length: 125) %></p>
+          <hr>
+          <strong>Average Score: <h4><%= average(review) %></h4></strong>
+          <div class="progress" style="border: 1px solid;">
+            <div class="progress-bar progress-bar-danger avgbar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: <%= average_bar(review) %>%; border: 1px solid black;" >
+            </div>
           </div>
         </div>
+        <% end %>
       </div>
-    <% end %>
     </div>
-
-    <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})", eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+    <div class="col-md-12">
+      <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})",
+      eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+    </div>
     <div class="clearfix"></div>
-    <div class="col-xs-12 col-md-12 transitions-enabled" id="gallery-show">
+    <div class="col-sm-12 transitions-enabled" id="gallery-show">
       <% @pictures.each do |pic| %>
         <div class="well" style="padding: 2px;">
-          <%= image_tag pic.picture.url(:medium), class: "img-responsive" %>
+          <%= image_tag pic.picture.url(:thumb), class: "img-responsive" %>
         </div>
       <% end %>
     </div>

@@ -41,4 +41,25 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse"href="#collapseThree">
+          Most Recent Reviews
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <% recent_reviews.each do |review| %>
+          <div class="well">
+            <h4><%= link_to review.title, eatery_review_path(review.eatery, review) %></h4>
+            <small>Rating: <%= average(review) %></small>
+            <br>
+            <strong><%= link_to review.eatery.name, review.eatery %></strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

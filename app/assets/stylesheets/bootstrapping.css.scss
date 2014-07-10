@@ -7,11 +7,23 @@ $brand-primary: $darker-theme;
 $navbar-default-bg: $darker-theme;
 $navbar-default-color: white;
 $navbar-default-link-color: white;
-
+$headings-font-family: Hallo;
+$font-family-sans-serif: sans-serif;
 
 @import "bootstrap";
 // Bootstrap body padding for fixed navbar
 body { padding-top: 60px; }
+
+@font-face {
+  font-family: Hallo;
+  src: font-url('Hallo_sans.otf') format('opentype');
+}
+
+
+
+.navbar{
+  font-family: Hallo;
+}
 
 .well {
   color: black;

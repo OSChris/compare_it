@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 col-md-10 col-md-offset-1 transitions-enabled" id="gallery-show">
+  <div class="col-xs-12 col-md-12 transitions-enabled" id="gallery-show">
     <% @pictures.each do |picture| %>
       <div class="well" style="padding: 5px;">
         <%= link_to image_tag(picture.picture.url(:medium)), [@gallery,picture], class: "img-responsive" %>

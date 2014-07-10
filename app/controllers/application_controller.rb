@@ -19,8 +19,13 @@ class ApplicationController < ActionController::Base
   helper_method :popular_eats
 
   def hall_of_fame
-    @hall_of_fame = Eatery.hall_of_fame.limit(3).order("total_average DESC")
+    @hall_of_fame ||= Eatery.hall_of_fame.limit(3).order("total_average DESC")
   end
   helper_method :hall_of_fame
+
+  def recent_reviews
+    @recent_reviews ||= Review.limit(5).order("created_at DESC") 
+  end
+  helper_method :recent_reviews
   
 end

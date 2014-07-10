@@ -30,6 +30,10 @@ class ReviewsController < ApplicationController
     @review = @eatery.reviews.new(review_params)
     @review.user = current_user
     if @review.save
+      if @review.tweet_it
+        service = Twitter::SendTweet.new(review: @review, url: eatery_review_url(@eatery, @review))
+        service.call
+      end
       redirect_to @eatery, notice: "Review successfully posted!"
     else
       render :new, alert: "Something went wrong when posting your review"

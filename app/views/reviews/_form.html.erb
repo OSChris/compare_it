@@ -10,6 +10,9 @@
         <div class="taste-display pull-right"></div>
         <%= f.range_field :taste, in: 1..10, step: 1, id: "taste", class: "range-field" %>
         <%= f.text_area :description, input_html: { class: 'form-control' } %>
+        <% if current_user.authenticated_twitter? && !@review.persisted? %>
+            <%= f.check_box :tweet_it, input_html: { value: true } %>
+        <% end %>
         <%= f.submit "Compare it!", class: "btn btn-warning" %>
     <% end %>
   </div>
