@@ -27,5 +27,10 @@ class ApplicationController < ActionController::Base
     @recent_reviews ||= Review.limit(5).order("created_at DESC") 
   end
   helper_method :recent_reviews
+
+  def kents
+    @kents = Kents.first
+  end
+  helper_method :kents
   
 end
