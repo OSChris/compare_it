@@ -1,28 +1,56 @@
-<h1>Compare it to Kent's!</h1>
+<h2>Kent's Kitchen</h2>
 
 <div class="row">
-  <div class="col-md-6">
-    <div style="width: 100%; height: 200px; background-color: grey;" class="col-md-6 col-xs-8"></div>
+  <div class="col-sm-12">
+    <div id="map" class="col-sm-6 child"></div>
+
+    <div class="col-sm-6 pull-right getaway">
+      <div class="well comparison kent-well animated bounceInRight">
+        <h3 class="responsive-text"><%= kents.name %></h3>
+        <div class="row">
+          <div class="col-sm-6 col-xs-6"><h4 class="responsive-text">Scores:</h4></div>
+          <div class="col-sm-6 col-xs-6 pull-right">
+            <h4 class="smallr kentstotal pull-right">Average: <%= '%.2f' % kents.total_average %></h4>
+          </div>
+        </div>
+        <p class="text-center">Price</p>
+        <%= render partial: "/eateries/average_bar", locals: { property: kents.average_price } %>
+        <p class="text-center">Portion</p>
+        <%= render partial: "/eateries/average_bar", locals: { property: kents.average_portion } %>
+        <p class="text-center">Taste</p>
+        <%= render partial: "/eateries/average_bar", locals: { property: kents.average_taste } %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <br>
+      <p>How do the eateries you've visited compare to Kent's Kitchen? It is the opinion of the world renowned food connoisseur Andrew that Kent's has the best PPT™ ratio of any eatery in Vancouver. PPT stands for Price, Portion, and Taste - Kent's offers the best tasting food in the largest portion for the lowest price. Unless you think otherwise? Share your reviews of other eateries in comparison to Kent's.</p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-sm-6">
+      <blockquote class="pull-right">
+        <p>My life has gotten so much better ever since I put Kent's inside me.</p>
+        <small><cite title="Josh">Josh</cite></small>
+      </blockquote>
+      <blockquote>
+        <p>A revolutionary revolutionizing revolution of groundbreakingness.</p>
+        <small><cite title="Chris">My Landlord Larry</cite></small>
+      </blockquote>
+      <blockquote>
+        <p>Why would you set the bar so low??</p>
+        <small><cite title="Tammam Kbeili">Tam </cite></small>
+      </blockquote>
+    </div>
   </div>
-  <div class="clearfix"></div>
-  <div class="col-md-6"
-    <p>How do the eateries you've visited compare to Kent's Kitchen? It is the opinion of the world renowned food connoisseur Andrew that Kent's has the best PPT™ of any eatery in Vancouver. </p>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-md-6">
-    <blockquote class="pull-right">
-      <p>My life has gotten so much better ever since I put Kent's inside me.</p>
-      <small><cite title="Josh">Josh</cite></small>
-    </blockquote>
-    <blockquote>
-      <p>A revolutionary revolutionizing revolution of groundbreakingness.</p>
-      <small><cite title="Chris">My Landlord Larry</cite></small>
-    </blockquote>
-    <blockquote>
-      <p>Why would you set the bar so low??</p>
-      <small><cite title="Tammam Kbeili">Tam </cite></small>
-    </blockquote>
-  </div>
-  
 </div>
 
+<script type="text/javascript">
+  
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw generate_map_json([kents]).to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+  });
+
+</script>

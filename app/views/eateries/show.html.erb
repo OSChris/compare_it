@@ -5,7 +5,7 @@
         <h2><%= @eatery.name %>
           <% if user_signed_in? %>
             <% if current_user.voted_for? @eatery %>
-              <%= link_to "<i class='fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post %>
+              <%= link_to "<i class='fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, class: "pulse animated infinite" %>
             <% else %>
               <%= link_to "<i class='fa fa-heart-o fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post %>
             <% end %>
@@ -22,8 +22,7 @@
     </div>
     <h4><%= @eatery.address %></h4>
     <div class="col-md-12 well">
-      <div id="map" class="col-md-12 child"></div>
-      <br>
+      <div id="map" class="col-md-12 child getaway"></div>
       <h4>Some words about the eatery</h4>
       <p><%= @eatery.description %></p>
     </div>
