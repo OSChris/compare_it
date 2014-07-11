@@ -8,6 +8,7 @@ gem 'pg'
 # Paperclip for attaching files to objects
 gem "paperclip", "~> 4.1"
 # Use SCSS for stylesheets
+gem 'font-awesome-sass'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootswatch-rails'

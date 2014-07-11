@@ -9,11 +9,8 @@
       </button>
     </div>
     <div class = "navbar-collapse collapse" id="navbar-main">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <%= form_tag eateries_path, method: :get do %>
+          <%= form_tag eateries_path, method: :get, class: "navbar-form navbar-left" do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search by name or address", class:  "form-control" %>
-        </div>
             <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
           <% end %>
       </form>

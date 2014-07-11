@@ -9,12 +9,20 @@ $ ->
   cw = $('.child').width() / 2
   $(".child").css height: cw + "px"
 
-  kentscore   = $('.kentstotal').html().replace("Average: ", "") 
-  eateryscore = $('.eaterytotal').html().replace("Average: ", "")
-  if kentscore > parseInt(eateryscore)
-    $('.kent-well').addClass("winner")
-    $('.eatery-well').addClass("loser")
-  else
-    $('.kent-well').addClass("loser")
-    $('.eatery-well').addClass("winner")
+  fightScore = ->
+    kentscore   = $('.kentstotal').html().replace("Average: ", "") 
+    eateryscore = $('.eaterytotal').html().replace("Average: ", "")
+    if kentscore > parseInt(eateryscore)
+      $('.kent-well').addClass("winner")
+      $('.eatery-well').removeClass("animated bounceInLeft").addClass("loser")
+    else
+      $('.kent-well').removeClass("animated bounceInRight").addClass("loser")
+      $('.eatery-well').addClass("winner")
+
+  delay = (ms, func) -> setTimeout func, ms
+
+  delay 1500, fightScore
+
+  
+    
 

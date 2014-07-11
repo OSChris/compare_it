@@ -5,6 +5,7 @@ class EateriesController < ApplicationController
 
   def index
     @eateries = Eatery.paginate(page: params[:page]).order("total_average DESC").search(params[:search])
+    render :index
   end
 
   def show

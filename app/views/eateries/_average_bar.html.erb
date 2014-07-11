@@ -1,0 +1,13 @@
+<% if property != nil %>
+  <div class="progress" style="border: 1px solid;">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: <%= property * 10 %>%; border: 1px solid black;" >
+    <%= '%.2f' % property %>
+    </div>
+  </div>
+<% else %>
+  <div class="progress" style="border: 1px solid;">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: 0%; border: 1px solid black;" >
+    0.0
+    </div>
+  </div>
+<% end %>
