@@ -11,7 +11,7 @@
       <div class="panel-body">
         <% popular_eats.each do |pop| %>
           <div class="well">
-            <h4><%= link_to pop.name, pop %></h4>
+            <h4><%= link_to pop.name, pop, data: {no_turbolink: true} %></h4>
             <small><%= pop.address %></small>
             <br>
             <strong>Likes: <%= pop.votes_for.count %></strong>
@@ -32,7 +32,7 @@
       <div class="panel-body">
         <% hall_of_fame.each do |hof| %>
           <div class="well">
-            <h4><%= link_to hof.name, hof %></h4>
+            <h4><%= link_to hof.name, hof, data: {no_turbolink: true} %></h4>
             <small><%= hof.address %></small>
             <br>
             <strong>Score: <%= '%.2f' % (hof.total_average) %></strong>
@@ -56,7 +56,7 @@
             <h4><%= link_to review.title, eatery_review_path(review.eatery, review) %></h4>
             <small>Rating: <%= average(review) %></small>
             <br>
-            <strong><%= link_to review.eatery.name, review.eatery %></strong>
+            <strong><%= link_to review.eatery.name, review.eatery, data: {no_turbolink: true} %></strong>
           </div>
         <% end %>
       </div>

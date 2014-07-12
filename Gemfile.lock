@@ -75,6 +75,14 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    elasticsearch (0.4.11)
+      elasticsearch-api (= 0.4.11)
+      elasticsearch-transport (= 0.4.11)
+    elasticsearch-api (0.4.11)
+      multi_json
+    elasticsearch-transport (0.4.11)
+      faraday
+      multi_json
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.0)
@@ -203,6 +211,10 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    searchkick (0.7.9)
+      activemodel
+      elasticsearch (~> 0.4.11)
+      hashie
     simple_oauth (0.2.0)
     spoon (0.0.4)
       ffi
@@ -285,6 +297,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  searchkick
   spring
   turbolinks
   twitter

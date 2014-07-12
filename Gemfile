@@ -32,6 +32,8 @@ gem 'omniauth-google-oauth2'
 gem 'twitter'
 # Virtus for service objects
 gem 'virtus'
+# ElasticSearch
+gem 'searchkick'
 # Paginations
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
