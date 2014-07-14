@@ -8,20 +8,19 @@
     <div class="well">
       <div class="row">
         <div class="col-sm-12">
+          <div class="col-sm-2" style="margin-bottom: 3px;">
           <% if user_signed_in? %>
             <% if current_user.voted_for? @review %>
-              <div class="col-xs-4 col-md-2"><%= link_to "Unlike", 
-              eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-success btn-sm" %>
-              </div>
+              <%= link_to "<i class='fa fa-heart fa-2x'></i>".html_safe,
+              eatery_review_like_path(@eatery, @review), method: :post, class: "pulse animated infinite" %>
             <% else %>
-              <div class="col-xs-4 col-md-2"><%= link_to "Like", 
-              eatery_review_like_path(@eatery, @review), method: :post, class: "btn btn-warning btn-sm" %>
-              </div>
+              <%= link_to "<i class='fa fa-heart-o fa-2x'></i>".html_safe, 
+              eatery_review_like_path(@eatery, @review), method: :post %>
             <% end %>
           <% end %>
-          <ul class="list-group col-xs-4 col-sm-3 col-md-2">
-            <li class="list-group-item">Likes: <span class="badge"><%= number_of_likes(@review) %></span></li>
-          </ul>
+            <span class="badge"><%= number_of_likes(@review) %></span>
+          </div>
+          <%= render "/shared/share_buttons" %>
           <div class="pull-right teenyweeny">
             By: <%= link_to @review.full_name, @review.profile %>
           </div>

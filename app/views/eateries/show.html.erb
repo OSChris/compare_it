@@ -5,7 +5,6 @@
         <h2><%= @eatery.name %>
           <% if user_signed_in? %>
             <% if current_user.voted_for? @eatery %>
-<!--             wrap the icon in a span-->              
               <%= link_to "<i class='fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, class: "pulse animated infinite" %>
             <% else %>
               <%= link_to "<i class='fa fa-heart-o fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post %>
@@ -66,7 +65,8 @@
     <div class="col-sm-12 transitions-enabled" id="gallery-show">
       <% @pictures.each do |pic| %>
         <div class="well" style="padding: 2px;">
-          <%= image_tag pic.picture.url(:thumb), class: "img-responsive" %>
+          <%= link_to image_tag(pic.picture.url(:medium)), pic.picture.url(:large), 
+          class: "img-responsive", data: { lightbox: "show-gallery" } %>
         </div>
       <% end %>
     </div>
