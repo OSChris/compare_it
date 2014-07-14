@@ -12,10 +12,10 @@ $ ->
   fightScore = ->
     kentscore   = $('.kentstotal').html().replace("Average: ", "") 
     eateryscore = $('.eaterytotal').html().replace("Average: ", "")
-    if kentscore > parseInt(eateryscore)
+    if kentscore > parseFloat(eateryscore)
       $('.kent-well').addClass("winner")
       $('.eatery-well').removeClass("animated bounceInLeft").addClass("loser")
-    else
+    else if eateryscore > parseFloat(kentscore)
       $('.kent-well').removeClass("animated bounceInRight").addClass("loser")
       $('.eatery-well').addClass("winner")
 
