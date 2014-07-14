@@ -14,22 +14,45 @@
       </div>
     </div>
     <div class="row">
-    <div class="row getaway">
-      <% if user_signed_in? %>
-        <% if current_user.voted_for? @profile %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Unlike", profile_like_path(@profile), method: :post, class: "btn btn-success btn-sm" %>
-          </div>
-        <% else %>
-          <div class="col-xs-4 col-md-2"><%= link_to "Like", profile_like_path(@profile), method: :post, class: "btn btn-warning btn-sm" %>
+    
+      <div class="row getaway">
+        <div class="col-sm-2" style="margin-bottom: 3px;">
+          <% if user_signed_in? %>
+            <% if current_user.voted_for? @profile %>
+              <%= link_to "<i class='fa fa-heart fa-2x'></i>".html_safe,
+              profile_like_path(@profile), method: :post,
+              class: "pulse animated infinite" %>
+            <% else %>
+              <%= link_to "<i class='fa fa-heart-o fa-2x'></i>".html_safe, 
+              profile_like_path(@profile), method: :post %>
+            <% end %>
+          <% end %>
+          <span class="badge"><%= number_of_likes(@profile) %></span>
+        </div>
+      </div>
+      
+      <div class="col-sm-8 col-sm-offset-2">
+        <p><%= simple_format @profile.bio %></p>
+      </div>
+
+      <hr>
+
+      <div class="col-sm-6">
+        <h3>5 Most Recent Liked Reviews</h3>
+        <% @liked_reviews.each do |review| %>
+          <div class="well">
+            <h4><%= link_to truncate(review.title, length: 40), eatery_review_path(review.eatery, review) %></h4>
           </div>
         <% end %>
-      <% end %>
-      <ul class="list-group col-xs-4 col-sm-3 col-md-2">
-        <li class="list-group-item">Likes: <span class="badge"><%= @profile.votes_for.size %></span></li>
-      </ul>
-    </div>
-      <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <p><%= simple_format @profile.bio %></p>
+      </div>
+
+      <div class="col-sm-6">
+        <h3>5 Most Recent Liked Eateries</h3>
+        <% @liked_eateries.each do |eatery| %>
+          <div class="well">
+            <h4><%= link_to eatery.name, eatery_path(eatery) %></h4>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

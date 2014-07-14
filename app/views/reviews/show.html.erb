@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
-    <%= link_to "Back", eatery_reviews_path(@review.eatery), class: "btn btn-primary getaway" %>
+    <%= link_to "Back", eatery_reviews_path(@review.eatery),
+    class: "btn btn-primary getaway" %>
   </div>
 </div>
 <div class="row">
@@ -12,7 +13,8 @@
           <% if user_signed_in? %>
             <% if current_user.voted_for? @review %>
               <%= link_to "<i class='fa fa-heart fa-2x'></i>".html_safe,
-              eatery_review_like_path(@eatery, @review), method: :post, class: "pulse animated infinite" %>
+              eatery_review_like_path(@eatery, @review), method: :post,
+              class: "pulse animated infinite" %>
             <% else %>
               <%= link_to "<i class='fa fa-heart-o fa-2x'></i>".html_safe, 
               eatery_review_like_path(@eatery, @review), method: :post %>
