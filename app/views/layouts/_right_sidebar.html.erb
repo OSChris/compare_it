@@ -14,7 +14,7 @@
             <h4><%= link_to pop.name, pop, data: {no_turbolink: true} %></h4>
             <small><%= pop.address %></small>
             <br>
-            <strong>Likes: <%= pop.votes_for.count %></strong>
+            <small><strong>Likes: <%= pop.votes_for.count %></strong></small>
           </div>
         <% end %>
       </div>
@@ -35,7 +35,7 @@
             <h4><%= link_to hof.name, hof, data: {no_turbolink: true} %></h4>
             <small><%= hof.address %></small>
             <br>
-            <strong>Score: <%= '%.2f' % (hof.total_average) %></strong>
+            <small><strong>Score: <%= '%.2f' % (hof.total_average) %></strong></small>
           </div>
         <% end %>
       </div>
@@ -56,7 +56,7 @@
             <h4><%= link_to review.title, eatery_review_path(review.eatery, review) %></h4>
             <small>Rating: <%= average(review) %></small>
             <br>
-            <strong><%= link_to review.eatery.name, review.eatery, data: {no_turbolink: true} %></strong>
+            <small><strong><%= link_to review.eatery.name, review.eatery, data: {no_turbolink: true} %></strong></small>
           </div>
         <% end %>
       </div>

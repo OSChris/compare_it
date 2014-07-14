@@ -7,7 +7,7 @@
 // $navbar-default-bg: $darker-theme;
 // $navbar-default-color: white;
 // $navbar-default-link-color: white;
-// $headings-font-family: Hallo;
+$headings-font-family: Hallo;
 // $font-family-sans-serif: sans-serif;
 
 @import "bootswatch/united/variables";
@@ -24,6 +24,10 @@ body { padding-top: 60px; }
 @font-face {
   font-family: Hallo;
   src: font-url('Hallo_sans.otf') format('opentype');
+}
+
+.review-btn {
+  box-shadow: 0 0 20px red;
 }
 
 .navbar{

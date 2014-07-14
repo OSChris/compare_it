@@ -1,6 +1,8 @@
 class Review < ActiveRecord::Base
-  
+
   attr_accessor :tweet_it
+  
+  searchkick
 
   belongs_to :user
   belongs_to :eatery
