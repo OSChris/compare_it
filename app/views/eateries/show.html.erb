@@ -5,6 +5,7 @@
         <h2><%= @eatery.name %>
           <% if user_signed_in? %>
             <% if current_user.voted_for? @eatery %>
+<!--             wrap the icon in a span-->              
               <%= link_to "<i class='fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, class: "pulse animated infinite" %>
             <% else %>
               <%= link_to "<i class='fa fa-heart-o fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post %>
@@ -16,17 +17,23 @@
     </div>
 
     <%= render "/eateries/comparison" %>
-    <div class="getaway">
-      <%= link_to "Compare it to Kent's!", new_eatery_review_path(@eatery), class: "btn btn-warning" %>
-      <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), class: "btn btn-primary" %>
+    <div class="col-sm-12 getaway">
+      <%= link_to "Submit Your Own Review", new_eatery_review_path(@eatery), 
+      class: "btn btn-primary review-btn" %>
+      <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), 
+      class: "btn btn-primary" %>
     </div>
+
     <h4><%= @eatery.address %></h4>
+
     <div class="col-md-12 well">
-      <div id="map" class="col-md-12 child getaway"></div>
       <h4>Some words about the eatery</h4>
       <p><%= @eatery.description %></p>
+      <div id="map" class="col-md-12 child getaway"></div>
     </div>
+
   </div>
+
   <div class="col-md-12">
     <div class="row">
       <div class="col-sm-12">
@@ -44,7 +51,7 @@
           <hr>
           <strong>Average Score: <h4><%= average(review) %></h4></strong>
           <div class="progress" style="border: 1px solid;">
-            <div class="progress-bar progress-bar-danger avgbar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: <%= average_bar(review) %>%; border: 1px solid black;" >
+            <div class="progress-bar progress-bar-danger avgbar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="10" style="width: <%= average_bar(review) %>%;" >
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-6 col-sm-6">
     <div class="well comparison eatery-well animated bounceInLeft">
-      <h3 class="responsive-text"><%= @eatery.name %></h3>
+      <h3 class="responsive-text"><%= link_to @eatery.name, eatery_reviews_path(@eatery) %></h3>
       <div class="row">
         <div class="col-sm-6 col-xs-6"><h4 class="responsive-text">Scores:</h4></div>
         <div class="col-sm-6 col-xs-6 pull-right">
@@ -18,7 +18,7 @@
   </div>
   <div class="col-xs-6 col-sm-6">
     <div class="well comparison kent-well animated bounceInRight">
-      <h3 class="responsive-text"><%= kents.name %></h3>
+      <h3 class="responsive-text"><%= link_to kents.name, root_path %></h3>
       <div class="row">
         <div class="col-sm-6 col-xs-6"><h4 class="responsive-text">Scores:</h4></div>
         <div class="col-sm-6 col-xs-6 pull-right">

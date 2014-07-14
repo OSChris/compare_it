@@ -4,7 +4,13 @@ class EateriesController < ApplicationController
   before_action :authenticate_user!, only: [:like]
 
   def index
-    @eateries = Eatery.paginate(page: params[:page]).order("total_average DESC").search(params[:search])
+    @eateries = Eatery.search params[:search],
+    fields: [{name: :word_start}],
+    operator: "or",
+    page: params[:page], 
+    per_page: 10 
+
+
     render :index
   end
 

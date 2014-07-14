@@ -1,5 +1,7 @@
 class Eatery < ActiveRecord::Base
 
+  searchkick word_start: [:name]
+  
   has_many :reviews, dependent: :destroy
   has_many :users_who_reviewed, through: :reviews, source: :user
 
@@ -50,14 +52,14 @@ class Eatery < ActiveRecord::Base
 
   private
 
-  def self.search(search)
-    if search
-      search = "%#{search}%"
-      where("eateries.name ILIKE ? OR eateries.address ILIKE ?",
-      search, search)
-    else
-      all
-    end
-  end
+  # def self.search(search)
+  #   if search
+  #     search = "%#{search}%"
+  #     where("eateries.name ILIKE ? OR eateries.address ILIKE ?",
+  #     search, search)
+  #   else
+  #     all
+  #   end
+  # end
 
 end
