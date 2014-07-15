@@ -20,7 +20,7 @@
       <%= link_to "Submit Your Own Review", new_eatery_review_path(@eatery), 
       class: "btn btn-primary review-btn" %>
       <%= link_to "All Reviews (#{@eatery.reviews.count})", eatery_reviews_path(@eatery), 
-      class: "btn btn-primary" %>
+      class: "btn btn-info" %>
     </div>
 
     <h4><%= @eatery.address %></h4>
@@ -72,6 +72,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 <script type="text/javascript">

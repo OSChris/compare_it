@@ -1,0 +1,17 @@
+<div class="col-sm-offset-1 col-sm-10" style="padding-top: 10px; padding-bottom: 10px;">
+  <%= bootstrap_form_for [@eatery, @review] do |f| %>
+        
+      <%= f.text_field :title %>
+      <div class="price-display pull-right"></div>
+      <%= f.range_field :price, in: 1..10, step: 1, id: "price"%>
+      <div class="portion-display pull-right"></div>
+      <%= f.range_field :portion, in: 1..10, step: 1, id: "portion"%>
+      <div class="taste-display pull-right"></div>
+      <%= f.range_field :taste, in: 1..10, step: 1, id: "taste"%>
+      <%= f.text_area :description %>
+      <% if current_user.authenticated_twitter? && !@review.persisted? %>
+          <%= f.check_box :tweet_it %>
+      <% end %>
+      <%= f.submit "Compare it!", class: "btn btn-warning" %>
+  <% end %>
+</div>

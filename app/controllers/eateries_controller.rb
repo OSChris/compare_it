@@ -7,6 +7,7 @@ class EateriesController < ApplicationController
     @eateries = Eatery.search params[:search],
     fields: [{name: :word_start}],
     operator: "or",
+    misspellings: { distance: 2 },
     page: params[:page], 
     per_page: 10 
 

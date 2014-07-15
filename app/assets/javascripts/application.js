@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require lightbox.min.js
 //= require jquery_ujs
+//= require lightbox.min.js
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
