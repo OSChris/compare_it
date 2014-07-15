@@ -6,10 +6,9 @@ class CheckInsController < ApplicationController
 
   def geocheckin
     result = request.location
-    kentslat = Kents.first.latitude
-    kentslong = Kents.first.longitude
+    @kents = Kents.first
 
-    if result.distance_from([kentslat, kentslong]) <= 0.03
+    if @kents.distance_from(result.coordinates) <= 0.03
       @validation = current_user.build_kent_validation
       @validation.save
     else
