@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  
   get 'home' => "home#home", as: 'home'
   get 'importer' => "eateries#importer", as: ''
+
+  get 'verify' => "check_ins#statuscheck", as: 'verify'
+  get 'verifying' => "check_ins#geocheckin", as: 'verifier'
 
   devise_for :users,
              :controllers => { registrations: "my_devise/registrations",

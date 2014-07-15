@@ -21,7 +21,12 @@ $ ->
 
   delay = (ms, func) -> setTimeout func, ms
 
+  hideFlashMessages = ->
+    $(".alert").slideUp()
+
   delay 1500, fightScore
+
+  delay 7000, hideFlashMessages
 
   
     
