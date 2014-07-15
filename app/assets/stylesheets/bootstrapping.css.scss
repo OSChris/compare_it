@@ -1,14 +1,4 @@
-// $theme: #FF6600;
-// $darker-theme: #10CC32;
-// $border-radius-base: 0px;
-// $body-bg: white;
-// $text-color: $darker-theme;
-// $brand-primary: $theme;
-// $navbar-default-bg: $darker-theme;
-// $navbar-default-color: white;
-// $navbar-default-link-color: white;
 $headings-font-family: Hallo;
-// $font-family-sans-serif: sans-serif;
 
 @import "bootswatch/united/variables";
 
@@ -18,10 +8,6 @@ $headings-font-family: Hallo;
 // Bootstrap body padding for fixed navbar
 body { 
   padding-top: 60px;
-  a:hover{
-    text-decoration: none;
-    text-shadow: 0 0 5px #bf3e11;
-  } 
 }
 
 
@@ -41,12 +27,6 @@ body {
   font-family: Hallo;
 }
 
-// .well {
-//   color: black;
-// }
-// .list-group-item {
-//   color: black;
-// }
 .navbar-brand {
   font-size: 2.1em;
   font-weight: bold;
