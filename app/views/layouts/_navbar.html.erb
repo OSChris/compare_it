@@ -33,8 +33,12 @@
             <ul class="dropdown-menu">
               <li><%= link_to "My Profile", profile_path(current_user.profile) %></li>
               <li class="divider"></li>
+                <% if current_user.kent_validation.present? %>
+                <li><%= link_to "Verified <i class='fa fa-check-square'></i>".html_safe, verify_path %></li>
+                <% else %>
+                <li><%= link_to "Verify Account", verify_path %></li>
+                <% end %>
               <li><%= link_to "Account Settings", edit_user_registration_path(current_user) %></li>
-              <li><%= link_to "Verify Account", verify_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>

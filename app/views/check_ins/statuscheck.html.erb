@@ -1,12 +1,20 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="well">
+      <% if current_user.kent_validation.present? %>
+        <h3>You've already verified your account!</h3>
+        <p>
+          You have graced the glory that is Kent's Kitchen so you are infinitely
+          more important than those who have not.
+        </p>
+      <% else %>
       <h3>Have you been to Kent's?</h3>
       <p>Prove it! If you want your reviews to be counted on an eatery's score,
          then just press this button to check in while you're at Kent's Kitchen!<br>
          Load this page up on your phone and press it when you're ready!
       </p>
         <%= link_to "I'm at Kent's!", verifier_path, class: "btn btn-primary btn-lg" %>
+      <% end %>
     </div>
   </div>
 </div>
