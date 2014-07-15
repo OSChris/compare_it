@@ -13,19 +13,29 @@
          then just press this button to check in while you're at Kent's Kitchen!<br>
          Load this page up on your phone and press it when you're ready!
       </p>
-        <%= link_to "I'm at Kent's!", verifier_path, class: "btn btn-primary btn-lg geochecker" %>
+        <%= form_tag verifier_path, method: :get do %>
+          <%= number_field_tag :lat, params[:lat], class: "hidden latfield", step: 'any' %>
+          <%= number_field_tag :lon, params[:lon], class: "hidden lonfield", step: 'any' %>      
+          <%= submit_tag "I'm at Kent's!", name: nil, 
+          class: "btn btn-primary btn-lg geochecker" %>
+        <% end %>
       <% end %>
+    </div>
+    <div class="lemme">
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  $(".geochecker").onclick = function() {
-    navigator.geolocation.getCurrentPosition(function(position) {
+  function gettingPos(position){
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
-      var pin = [parseFloat(lat), parseFloat(lon)]
-      $.get("/verifying?pos=" + pin)
-    });
+      $(".latfield").val(lat);
+      $(".lonfield").val(lon);
+      $(".lemme").html(lat + ", " + lon)
+    };
+
+  window.onload = function() {
+    navigator.geolocation.getCurrentPosition(gettingPos);
   };
 </script>
