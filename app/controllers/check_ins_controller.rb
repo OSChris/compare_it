@@ -7,7 +7,7 @@ class CheckInsController < ApplicationController
   def geocheckin
     lat = params[:lat]
     lon = params[:lon]
-    @kents = Eatery.last
+    @kents = Kents.last
 
     if @kents.distance_from([lat, lon]) <= 0.05
       @validation = current_user.build_kent_validation
