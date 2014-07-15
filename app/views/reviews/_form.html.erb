@@ -1,19 +1,21 @@
 <div class= "row">
-  <div class= "col-xs-12 col-md-6 well">
-    <%= bootstrap_form_for [@eatery, @review], class: "form-horizontal" do |f| %>
-      
-        <%= f.text_field :title, input_html: { class: 'form-control' } %>
-        <div class="price-display pull-right"></div>
-        <%= f.range_field :price, in: 1..10, step: 1, id: "price", class: "range-field" %>
-        <div class="portion-display pull-right"></div>
-        <%= f.range_field :portion, in: 1..10, step: 1, id: "portion", class: "range-field" %>
-        <div class="taste-display pull-right"></div>
-        <%= f.range_field :taste, in: 1..10, step: 1, id: "taste", class: "range-field" %>
-        <%= f.text_area :description, input_html: { class: 'form-control' } %>
-        <% if current_user.authenticated_twitter? && !@review.persisted? %>
-            <%= f.check_box :tweet_it, input_html: { value: true } %>
+  <div class= "col-xs-12 col-sm-6">
+    <div class="well">
+        <%= bootstrap_form_for [@eatery, @review], class: "form-horizontal" do |f| %>
+          
+            <%= f.text_field :title, input_html: { class: 'form-control' } %>
+            <div class="price-display pull-right"></div>
+            <%= f.range_field :price, in: 1..10, step: 1, id: "price", class: "range-field" %>
+            <div class="portion-display pull-right"></div>
+            <%= f.range_field :portion, in: 1..10, step: 1, id: "portion", class: "range-field" %>
+            <div class="taste-display pull-right"></div>
+            <%= f.range_field :taste, in: 1..10, step: 1, id: "taste", class: "range-field" %>
+            <%= f.text_area :description, input_html: { class: 'form-control' } %>
+            <% if current_user.authenticated_twitter? && !@review.persisted? %>
+                <%= f.check_box :tweet_it, input_html: { value: true } %>
+            <% end %>
+            <%= f.submit "Compare it!", class: "btn btn-warning" %>
         <% end %>
-        <%= f.submit "Compare it!", class: "btn btn-warning" %>
-    <% end %>
+    </div>
   </div>
 </div>
