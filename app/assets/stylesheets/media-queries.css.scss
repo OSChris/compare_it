@@ -55,7 +55,11 @@
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
-
+  .navbar-brand {
+      font-size: 12px;
+      font-weight: bold;
+      text-shadow: 1px 1px black;
+    }
 }
 
 /* Custom, iPhone Retina */ 
