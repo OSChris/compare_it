@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     provider.nil?
   end
 
+  def verified?
+    kent_validation.present?
+  end
+
   def authenticated_twitter?
     uid.present? && provider == "twitter"
   end
