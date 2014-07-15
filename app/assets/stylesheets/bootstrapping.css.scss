@@ -3,9 +3,6 @@ $headings-font-family: Hallo;
 @import "bootswatch/united/variables";
 
 // Then bootstrap itself
-@import "bootstrap";
-
-// Bootstrap body padding for fixed navbar
 body { 
   padding-top: 60px;
   a:hover{
@@ -13,6 +10,9 @@ body {
     text-shadow: 0 0 5px #bf3e11;
   }
 }
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
 
 
 // And finally bootswatch style itself
