@@ -63,6 +63,8 @@ group :production do
   gem 'aws-sdk'
 end
 
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
 group :development do
   gem 'letter_opener'
   gem 'interactive_editor'
