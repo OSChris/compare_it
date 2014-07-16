@@ -16,8 +16,10 @@
         <%= form_tag verifier_path, method: :get do %>
           <%= number_field_tag :lat, params[:lat], class: "hidden latfield", step: 'any' %>
           <%= number_field_tag :lon, params[:lon], class: "hidden lonfield", step: 'any' %>      
+          <small>The button will light up in 5 seconds (takes a while to get GPS coordinates!)</small>
+          <br>
           <%= submit_tag "I'm at Kent's!", name: nil, 
-          class: "btn btn-primary btn-lg geochecker" %>
+          class: "btn btn-primary btn-lg geochecker disabled" %>
         <% end %>
       <% end %>
     </div>
@@ -38,4 +40,8 @@
   window.onload = function() {
     navigator.geolocation.getCurrentPosition(gettingPos);
   };
+</script>
+
+<script type="text/javascript">
+  setTimeout(function() { $("input[type=submit]").removeClass("disabled") }, 7000)
 </script>
