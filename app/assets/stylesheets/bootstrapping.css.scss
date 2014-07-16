@@ -24,7 +24,11 @@ body {
 }
 
 .review-btn {
-  box-shadow: 0 0 20px red;
+}
+
+.review-well {
+  min-height: 250px;
+  border-radius: 0px;
 }
 
 .navbar{

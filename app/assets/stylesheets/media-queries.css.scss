@@ -41,7 +41,9 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-
+  .not-verified {
+    font-size: 12px;
+  }
 }
 
 /* Medium Devices, Desktops */

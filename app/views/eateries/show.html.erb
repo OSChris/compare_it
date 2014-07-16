@@ -45,8 +45,8 @@
           <div class="user-window pull-right">
             By: <%= link_to review.full_name, review.profile, class: "teenyweeny" %>
           </div>
-          <h3><%= link_to truncate(review.title, length: 30), eatery_review_path(@eatery, review) %></h3>
-          <p><%= simple_format truncate(review.description, length: 125) %></p>
+          <h3><%= link_to truncate(review.title, length: 20), eatery_review_path(@eatery, review) %></h3>
+          <p><%= simple_format truncate(review.description, length: 60) %></p>
           <hr>
           <%= render partial: "/reviews/verified", locals: { review: review } %>
           <strong>Average Score: <h4><%= average(review) %></h4></strong>

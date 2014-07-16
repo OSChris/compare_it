@@ -3,15 +3,15 @@
     <%= link_to "Back to #{@eatery.name}", @eatery, class: "btn btn-primary" %>
     <h2>List of Reviews for <%= @eatery.name %></h2>
     <% @eatery.reviews.each_slice(3) do |review_group| %>
-      <div class="row">
+      <div class="row" style="margin-bottom:0px;">
         <div class="col-sm-12">
           <% review_group.each do |review| %>
-            <div class= "well col-md-4">
+            <div class= "well col-md-4 review-well" style="margin-bottom:0px;">
               <div class="user-window pull-right">
                 By: <%= link_to review.full_name, review.profile, class: "teenyweeny" %>
               </div>
-              <h3><%= link_to review.title, eatery_review_path(@eatery, review) %></h3>
-              <p><%= simple_format truncate(review.description, length: 200) %></p>
+              <h3><%= link_to truncate(review.title, length: 20), eatery_review_path(@eatery, review) %></h3>
+              <p><%= simple_format truncate(review.description, length: 30) %></p>
               <hr>
               <%= render partial: "reviews/verified", locals: { review: review } %>
               <strong>Average Score: <h4><%= average(review) %></h4></strong>
