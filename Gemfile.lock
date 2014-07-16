@@ -152,6 +152,8 @@ GEM
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
+    omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-google-oauth2 (0.2.4)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -294,6 +296,7 @@ DEPENDENCIES
   jquery-turbolinks
   letter_opener
   masonry-rails
+  omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
   paperclip (~> 4.1)

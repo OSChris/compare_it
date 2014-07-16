@@ -65,6 +65,23 @@ class User < ActiveRecord::Base
     user
   end
 
+  def self.find_or_create_from_facebook(oauth_data)
+    user = User.where(provider: :facebook, uid: oauth_data["uid"]).first
+    
+    unless user
+      user = User.create(first_name: oauth_data["info"]["first_name"],
+                         last_name:  oauth_data["info"]["last_name"],
+                         email:      oauth_data["info"]["email"],
+                         password: Devise.friendly_token[0, 20],
+                         provider: :facebook,
+                         uid: oauth_data["uid"])
+      profile = Profile.new
+      profile.user = user
+      profile.save
+    end
+    user
+  end
+
 
 
   def full_name

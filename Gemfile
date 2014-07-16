@@ -28,6 +28,7 @@ gem 'devise', '~> 3.2.4'
 # OmniAuth for social media integration
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 # Twitter gem
 gem 'twitter'
 # Virtus for service objects
