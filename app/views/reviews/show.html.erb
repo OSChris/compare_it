@@ -31,6 +31,7 @@
       <h1><%= @review.title %></h1>
       <p><%= simple_format @review.description %></p>
       <hr>
+      <%= render partial: "reviews/verified", locals: { review: @review } %>
       <%= render "reviews/review_bars" %>
       
         <div class="row">

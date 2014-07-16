@@ -6,10 +6,22 @@
   height: 343px;
 }
 
+.verify-badge {
+  img {
+    max-height: 40px;
+  }
+}
+
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.not-verified {
+  color: #bf3e11;
+  border: 3px solid #bf3e11;
+  font-weight: bold;
 }
 
 .comparison { 
