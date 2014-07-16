@@ -25,6 +25,7 @@
     </div>
     <div class="lemme">
     </div>
+    <div>Kents: 49.279387, -123.098868</div>
   </div>
 </div>
 
@@ -34,7 +35,7 @@
       var lon = position.coords.longitude;
       $(".latfield").val(lat);
       $(".lonfield").val(lon);
-      $(".lemme").html(lat + ", " + lon)
+      $(".lemme").html("You: " + lat + ", " + lon)
     };
 
   window.onload = function() {
