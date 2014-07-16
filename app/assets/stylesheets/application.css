@@ -22,6 +22,6 @@
  *= require 'masonry/infinitescroll'
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
- *= media-queries
+ *= require media-queries
  */
 
