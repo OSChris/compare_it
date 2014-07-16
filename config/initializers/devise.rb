@@ -231,8 +231,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :twitter, Rails.application.secrets.twitter_api_key,
-                            Rails.application.secrets.twitter_api_secret
+  config.omniauth :twitter, ENV["twitter_api_key"],
+                            ENV["twitter_api_secret"]
 
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"],
                                   ENV["GOOGLE_CLIENT_SECRET"]
