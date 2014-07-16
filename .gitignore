@@ -10,6 +10,7 @@
 # Ignore mailer account info
 /config/initializers/email_vars.rb
 /config/initializers/s3_vars.rb
+/config/initializers/oauthstuff.rb
 
 # Secrets
 /config/secrets.yml
