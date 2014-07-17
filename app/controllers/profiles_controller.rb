@@ -5,8 +5,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def show
-    @liked_reviews = current_user.get_voted(Review).limit(5)
-    @liked_eateries = current_user.get_voted(Eatery).limit(5)
+    @liked_reviews = @profile.user.get_voted(Review).limit(5)
+    @liked_eateries = @profile.user.get_voted(Eatery).limit(5)
   end
 
   def edit
