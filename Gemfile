@@ -21,6 +21,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Screen Scraper
+gem 'nokogiri'
+
 # Acts as voteable for the polymorphic associations for Like
 gem 'acts_as_votable', '~> 0.10.0'
 # Devise for user authentication

@@ -296,6 +296,7 @@ DEPENDENCIES
   jquery-turbolinks
   letter_opener
   masonry-rails
+  nokogiri
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
