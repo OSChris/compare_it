@@ -46,12 +46,16 @@ class ReviewsController < ApplicationController
   end
 
   def like
-    if current_user.voted_for? @review
-      @review.unliked_by current_user
-      redirect_to [@eatery, @review]
-    else
-      @review.liked_by current_user
-      redirect_to [@eatery, @review]
+    respond_to do |format|
+      if current_user.voted_for? @review
+        @review.unliked_by current_user
+        format.html { redirect_to [@eatery, @review] }
+        format.js   { render }
+      else
+        @review.liked_by current_user
+        format.html { redirect_to [@eatery, @review] }
+        format.js   { render }
+      end
     end
   end
 

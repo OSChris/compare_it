@@ -12,15 +12,15 @@
           <div class="col-sm-2" style="margin-bottom: 3px;">
           <% if user_signed_in? %>
             <% if current_user.voted_for? @review %>
-              <%= link_to "<i class='fa fa-heart fa-2x'></i>".html_safe,
-              eatery_review_like_path(@eatery, @review), method: :post,
-              class: "pulse animated infinite" %>
+              <%= link_to "<i class='fa fa-heart fa-2x like-heart'></i>".html_safe,
+              eatery_review_like_path(@eatery, @review), method: :post, id: "like-container",
+              class: "pulse animated infinite", remote: true %>
             <% else %>
-              <%= link_to "<i class='fa fa-heart-o fa-2x'></i>".html_safe, 
-              eatery_review_like_path(@eatery, @review), method: :post %>
+              <%= link_to "<i class='fa fa-heart-o fa-2x like-heart'></i>".html_safe, 
+              eatery_review_like_path(@eatery, @review), method: :post, id: "like-container", remote: true %>
             <% end %>
           <% end %>
-            <span class="badge"><%= number_of_likes(@review) %></span>
+            <span class="badge like-count"><%= number_of_likes(@review) %></span>
           </div>
           <%= render "/shared/share_buttons" %>
           <div class="pull-right teenyweeny">

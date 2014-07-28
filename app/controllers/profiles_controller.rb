@@ -22,12 +22,16 @@ class ProfilesController < ApplicationController
   end
 
   def like
-    if current_user.voted_for? @profile
-      @profile.unliked_by current_user
-      redirect_to @profile
-    else
-      @profile.liked_by current_user
-      redirect_to @profile
+    respond_to do |format|
+      if current_user.voted_for? @profile
+        @profile.unliked_by current_user
+        format.html { redirect_to @profile }
+        format.js   { render }
+      else
+        @profile.liked_by current_user
+        format.html { redirect_to @profile }
+        format.js   { render }
+      end
     end
   end
 

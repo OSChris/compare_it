@@ -5,12 +5,12 @@
         <h2><%= @eatery.name %>
           <% if user_signed_in? %>
             <% if current_user.voted_for? @eatery %>
-              <%= link_to "<i class='fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, class: "pulse animated infinite" %>
+              <%= link_to "<i class='like-heart fa fa-heart fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, remote: true, class: "pulse animated infinite", id: "like-container" %>
             <% else %>
-              <%= link_to "<i class='fa fa-heart-o fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post %>
+              <%= link_to "<i class='like-heart fa fa-heart-o fa-md'></i>".html_safe, eatery_like_path(@eatery), method: :post, remote: true, id: "like-container" %>
             <% end %>
           <% end %>
-          <span class="badge"><%= @eatery.votes_for.size %></span>
+          <span class="badge like-count"><%= @eatery.votes_for.size %></span>
         </h2>
       </div>
     </div>

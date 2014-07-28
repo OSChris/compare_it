@@ -28,12 +28,16 @@ class EateriesController < ApplicationController
   end
 
   def like
-    if current_user.voted_for? @eatery
-      @eatery.unliked_by current_user
-      redirect_to @eatery
-    else
-      @eatery.liked_by current_user
-      redirect_to @eatery
+    respond_to do |format|
+      if current_user.voted_for? @eatery
+        @eatery.unliked_by current_user
+        format.html { redirect_to @eatery }
+        format.js   { render }
+      else
+        @eatery.liked_by current_user
+        format.html { redirect_to @eatery }
+        format.js   { render }
+      end
     end
   end
 
