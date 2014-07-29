@@ -22,7 +22,7 @@ $ ->
   delay = (ms, func) -> setTimeout func, ms
 
   hideFlashMessages = ->
-    $(".alert").slideUp()
+    $(".alert").slideUp().remove()
 
   someFunction = (inputs) ->
     $(".something").slideUp()

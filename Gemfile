@@ -68,6 +68,7 @@ group :production do
 end
 
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+gem 'faker', '~> 1.3.0'
 
 group :development do
   gem 'letter_opener'
@@ -76,7 +77,6 @@ group :development do
   gem 'awesome_print'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'faker', '~> 1.3.0'
   gem 'rails-erd'
 end
 
