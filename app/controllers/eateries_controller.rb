@@ -18,8 +18,10 @@ class EateriesController < ApplicationController
   def show
     @review = Review.new
     @top_reviews = @eatery.reviews.best_reviews.limit(3)
-    @gallery = @eatery.gallery
-    @pictures = @gallery.pictures.limit(6)
+    if @eatery.gallery
+      @gallery = @eatery.gallery
+      @pictures = @gallery.pictures.limit(6)
+    end
   end
 
   def import

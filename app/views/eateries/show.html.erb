@@ -58,19 +58,21 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-12">
-      <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})",
-      eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-sm-12 transitions-enabled" id="gallery-show">
-      <% @pictures.each do |pic| %>
-        <div class="well" style="padding: 2px;">
-          <%= link_to image_tag(pic.picture.url(:medium)), pic.picture.url(:large), 
-          class: "img-responsive", data: { lightbox: "show-gallery" } %>
-        </div>
-      <% end %>
-    </div>
+    <% if @gallery.pictures.length > 0 %>
+      <div class="col-md-12">
+        <%= link_to "More Photos (#{@gallery.pictures.length - @pictures.length})",
+        eatery_gallery_path(@eatery, @eatery.gallery), class: "btn btn-info getaway" %>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-12 transitions-enabled" id="gallery-show">
+        <% @pictures.each do |pic| %>
+          <div class="well" style="padding: 2px;">
+            <%= link_to image_tag(pic.picture.url(:medium)), pic.picture.url(:large), 
+            class: "img-responsive", data: { lightbox: "show-gallery" } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 

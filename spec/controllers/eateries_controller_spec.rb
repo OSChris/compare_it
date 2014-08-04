@@ -26,6 +26,32 @@ RSpec.describe EateriesController, :type => :controller do
     #   expect(assigns(:eateries).results).to include(eatery)
     #   # expect(assigns(:eateries).results).to include(eatery)
     #   # expect(assigns(:eateries).results).to include(eatery1)
+    # end
+
+  end
+
+  describe "get #show" do 
+
+    let(:eatery) { create(:eatery) }
+
+    it "responds successfully with a 200 status code" do 
+      get :show, id: eatery.id
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it "assigns the eatery instance variable with a passed id" do 
+      get :show, id: eatery.id
+      expect(assigns(:eatery)).to eq(eatery)
+    end
+
+    it "renders the show template" do 
+      get :show, id: eatery.id
+      expect(response).to render_template(:show)
+    end
+
+    it "raises an error when trying to access an eatery that doesn't exist" do 
+      expect{get :show, id: (eatery.id + 1)}.to raise_error
     end
 
   end

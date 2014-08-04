@@ -22,7 +22,10 @@ $ ->
   delay = (ms, func) -> setTimeout func, ms
 
   hideFlashMessages = ->
-    $(".alert").slideUp().remove()
+    $(".alert").slideUp()
+
+  removeFlashMessages = ->
+    $(".alert").remove()
 
   someFunction = (inputs) ->
     $(".something").slideUp()
@@ -30,6 +33,8 @@ $ ->
   delay 1500, fightScore
 
   delay 7000, hideFlashMessages
+
+  delay 8000, removeFlashMessages
 
 
 
