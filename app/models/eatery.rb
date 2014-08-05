@@ -26,6 +26,13 @@ class Eatery < ActiveRecord::Base
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
+
+
+
+  #####################################################################
+  # This import method is how I originally populated the DB -- IGNORE #
+  #####################################################################
+
   require 'csv'
 
   def self.import(file)
@@ -41,7 +48,15 @@ class Eatery < ActiveRecord::Base
       end # end if !eatery.nil?
     end # end CSV.foreach
   end # end self.import(file)
+  
+  #####################################################################
+  #                                                                   #
+  #####################################################################
 
+
+
+
+  # UPDATE the average scores of an eatery upon each review submission
   def update_total_average
     self.average_price = self.reviews.average(:price)
     self.average_portion = self.reviews.average(:portion)
