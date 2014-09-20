@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @wishpond_test.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @wishpond_test.last_name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @wishpond_test.bio %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @wishpond_test.email %>
+</p>
+
+<%= link_to 'Edit', edit_wishpond_test_path(@wishpond_test) %> |
+<%= link_to 'Back', wishpond_tests_path %>
