@@ -1,5 +1,6 @@
 class WishpondTestsController < ApplicationController
   before_action :set_wishpond_test, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :create
 
   # GET /wishpond_tests
   # GET /wishpond_tests.json
