@@ -70,6 +70,6 @@ class WishpondTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wishpond_test_params
-      params.permit(:first_name, :last_name, :bio, :email)
+      params.permit("first-name", "last-name", :bio, :email)
     end
 end

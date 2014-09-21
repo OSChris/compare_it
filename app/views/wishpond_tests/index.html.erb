@@ -14,8 +14,8 @@
   <tbody>
     <% @wishpond_tests.each do |wishpond_test| %>
       <tr>
-        <td><%= wishpond_test.first-name %></td>
-        <td><%= wishpond_test.last-name %></td>
+        <td><%= wishpond_test."first-name" %></td>
+        <td><%= wishpond_test."last-name" %></td>
         <td><%= wishpond_test.bio %></td>
         <td><%= wishpond_test.email %></td>
         <td><%= link_to 'Show', wishpond_test %></td>
