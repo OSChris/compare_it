@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :wishpond_tests
+
   get 'home' => "home#home", as: 'home'
   get 'importer' => "eateries#importer", as: ''
 
